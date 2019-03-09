@@ -8,4 +8,4 @@ description: "This repository contains the original interface definitions of pub
   \ to utilize them more efficiently. You can also use these definitions with open\
   \ source tools to generate client libraries, documentation, and other artifacts."
 version: "0.0.1"
-githubName: null
+githubName: "HPI-de/hpi-cloud-apis"
