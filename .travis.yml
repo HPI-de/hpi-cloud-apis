@@ -21,16 +21,6 @@ script:
       ./hpi/**/*.proto
   - ./gradlew assemble
 
-# jobs:
-#   include:
-#     - stage: compile
-#     - stage: deploy
-
-# stages:
-#   - compile
-#   - name: deploy
-#     if: tag IS present
-
 deploy:
   - provider: script
     script: ./gradlew bintrayUpload
