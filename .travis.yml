@@ -19,7 +19,7 @@ script:
       --grpc_out=./src/main/java
       -I.
       ./hpi/**/*.proto
-  - ./gradlew assemble -Puser=$BINTRAY_USER -Pkey=$BINTRAY_KEY
+  - ./gradlew assemble
 
 # jobs:
 #   include:
@@ -33,6 +33,6 @@ script:
 
 deploy:
   - provider: script
-    script: ./gradlew bintrayUpload -Puser=$BINTRAY_USER -Pkey=$BINTRAY_KEY
+    script: ./gradlew bintrayUpload
     on:
       tags: true

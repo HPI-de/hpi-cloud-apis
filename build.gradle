@@ -69,8 +69,8 @@ publishing {
     }
 }
 bintray {
-    user = property("user")
-    key = property("key")
+    user = System.getenv('BINTRAY_USER') 
+    key = System.getenv('BINTRAY_KEY') 
 
     publications = ["all"]
     publish = true
