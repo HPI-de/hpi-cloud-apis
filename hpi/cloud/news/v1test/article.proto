@@ -1,0 +1,123 @@
+syntax = "proto3";
+
+package hpi.cloud.news.v1test;
+
+import "google/protobuf/timestamp.proto";
+import "hpi/cloud/common/v1test/image.proto";
+
+option java_multiple_files = true;
+option java_outer_classname = "ArticleProto";
+option java_package = "de.hpi.cloud.news.v1test";
+
+
+// Represents a news article.
+message Article {
+  // Required.
+  //
+  // The unique ID (across sites) of this article.
+  string id = 1;
+
+  // Required.
+  //
+  // ID of the original source of this article.
+  string sourceId = 2;
+
+  // Required.
+  //
+  // A link to the original source.
+  string link = 3;
+
+  // Required.
+  //
+  // The title of this news article.
+  string title = 4;
+
+  // Required.
+  //
+  // The publishing date.
+  google.protobuf.Timestamp publish_date = 5;
+
+  // Optional.
+  //
+  // IDs of the author(s).
+  repeated string author_ids = 6;
+
+  // Optional.
+  //
+  // The cover image.
+  hpi.cloud.common.v1test.Image cover = 7;
+
+  // Required.
+  //
+  // A short text summarizing this article. Recommended for a preview.
+  string teaser = 8;
+
+  // Required.
+  //
+  // The actual HTML-content of this article.
+  string content = 9;
+
+  // Optional.
+  //
+  // Categories of this article.
+  repeated Category categories = 10;
+
+  // Optional.
+  //
+  // Tags of this article.
+  repeated Tag tags = 11;
+
+  // Optional.
+  //
+  // The number of times this article was viewed.
+  uint32 view_count = 12;
+}
+
+// Represents an article source, e.g. HPI News or HPImgzn.
+message Source {
+  // Required.
+  //
+  // The unique ID of this source.
+  string id = 1;
+
+  // Required.
+  //
+  // The name of this source.
+  string name = 2;
+
+  // Required.
+  //
+  // The url of this source.
+  string link = 3;
+}
+
+// Represents a category by which articles can be filtered.
+message Category {
+  // Required.
+  //
+  // The unique ID of this category.
+  string id = 1;
+
+  // Required.
+  //
+  // The name of this category.
+  string name = 2;
+}
+
+// Represents a tag by which articles can be filtered.
+message Tag {
+  // Required.
+  //
+  // The unique ID of this tag.
+  string id = 1;
+
+  // Required.
+  //
+  // The name of this tag.
+  string name = 2;
+
+  // Required.
+  //
+  // The number of articles tagged with this tag.
+  uint32 article_count = 3;
+}

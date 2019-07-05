@@ -1,0 +1,124 @@
+syntax = "proto3";
+
+package hpi.cloud.news.v1test;
+
+import "hpi/cloud/news/v1test/article.proto";
+
+option java_multiple_files = true;
+option java_outer_classname = "NewsServiceProto";
+option java_package = "de.hpi.cloud.news.v1test";
+
+// Provides access to news from various sources, e.g. HPI News an HPImgzn.
+service NewsService {
+  // Lists articles.
+  rpc ListArticles (ListArticlesRequest) returns (ListArticlesResponse);
+
+  // Gets an article.
+  rpc GetArticle (GetArticleRequest) returns (Article);
+
+
+  // Lists sources.
+  rpc ListSources (ListSourcesRequest) returns (ListSourcesResponse);
+
+  // Gets a source.
+  rpc GetSource (GetSourceRequest) returns (Source);
+
+
+  // Lists categories.
+  rpc ListCategories (ListCategoriesRequest) returns (ListCategoriesResponse);
+
+  // Gets a category.
+  rpc GetCategory (GetCategoryRequest) returns (Category);
+
+
+  // Lists tags.
+  rpc ListTags (ListTagsRequest) returns (ListTagsResponse);
+
+  // Gets a tag.
+  rpc GetTag (GetTagRequest) returns (Tag);
+}
+
+// Request message for listing articles using [ListArticles][hpi.cloud.news.v1test.NewsService.ListArticles].
+message ListArticlesRequest {
+  // Optional.
+  //
+  // If specified, only articles from this site are returned.
+  string site_id = 1;
+
+  // Optional.
+  //
+  // If specified, only articles from this category are returned.
+  string category_id = 2;
+
+  // Optional.
+  //
+  // If specified, only articles tagged with this tag are returned.
+  string tag_id = 3;
+}
+
+// Response message for listing articles using [ListArticles][hpi.cloud.news.v1test.NewsService.ListArticles].
+message ListArticlesResponse {
+  repeated Article articles = 1;
+}
+
+// Request message for [GetArticle][hpi.cloud.news.v1test.NewsService.GetArticle].
+message GetArticleRequest {
+  // Required.
+  //
+  // The article ID.
+  string id = 1;
+}
+
+
+// Request message for listing sources using [ListSources][hpi.cloud.news.v1test.NewsService.ListSources].
+message ListSourcesRequest {
+}
+
+// Response message for listing sources using [ListSources][hpi.cloud.news.v1test.NewsService.ListSources].
+message ListSourcesResponse {
+  repeated Source sources = 1;
+}
+
+// Request message for [GetSource][hpi.cloud.news.v1test.NewsService.GetSource].
+message GetSourceRequest {
+  // Required.
+  //
+  // The source ID.
+  string id = 1;
+}
+
+
+// Request message for listing categories using [ListCategories][hpi.cloud.news.v1test.NewsService.ListCategories].
+message ListCategoriesRequest {
+}
+
+// Response message for listing categories using [ListCategories][hpi.cloud.news.v1test.NewsService.ListCategories].
+message ListCategoriesResponse {
+  repeated Category categories = 1;
+}
+
+// Request message for [GetCategory][hpi.cloud.news.v1test.NewsService.GetCategory].
+message GetCategoryRequest {
+  // Required.
+  //
+  // The category ID.
+  string id = 1;
+}
+
+
+// Request message for listing tags using [ListTags][hpi.cloud.news.v1test.NewsService.ListTags].
+message ListTagsRequest {
+}
+
+// Response message for listing tags using [ListTags][hpi.cloud.news.v1test.NewsService.ListTags].
+message ListTagsResponse {
+  repeated Tag tags = 1;
+}
+
+// Request message for [GetTag][hpi.cloud.news.v1test.NewsService.GetTag].
+message GetTagRequest {
+  // Required.
+  //
+  // The tag ID.
+  string id = 1;
+}
