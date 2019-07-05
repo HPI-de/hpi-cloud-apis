@@ -9,7 +9,7 @@ repositories {
     jcenter()
 }
 dependencies {
-    api("com.google.protobuf:protobuf-java:3.6.1")
+    api("com.google.protobuf:protobuf-java:3.8.0")
     // implementation as Android clients will replace this with grpc-protobuf-lite
     implementation("io.grpc:grpc-protobuf:1.21.0")
     api("io.grpc:grpc-stub:1.21.0")
@@ -35,7 +35,7 @@ ext {
     githubReleaseNotes = 'CHANGELOG.md'
     allLicenses = ["Apache-2.0"]
 
-    libraryVersion = "0.0.1"
+    libraryVersion = "0.0.2"
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {

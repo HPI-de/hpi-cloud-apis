@@ -19,8 +19,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 
+## [0.0.2] - 2019-07-05
+### Changed
+- Updated library `com.google.protobuf:protobuf-java` to version 3.8.0.
+
 ## 0.0.1 - 2019-07-05
 Initial release with NewsService.
 
 
-[Unreleased]: https://github.com/HPI-de/hpi-cloud-apis/compare/v0.0.1...dev
+[Unreleased]: https://github.com/HPI-de/hpi-cloud-apis/compare/0.0.2...dev
+[0.0.2]: https://github.com/HPI-de/hpi-cloud-apis/compare/0.0.1...0.0.2
