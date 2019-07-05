@@ -8,8 +8,7 @@ jdk:
   - oraclejdk8
 
 script:
-  - >
-    docker run --rm
+  - docker run --rm
       -v $(pwd):$(pwd)
       -w $(pwd)
       znly/protoc
@@ -19,6 +18,16 @@ script:
       -I.
       ./hpi/**/*.proto
   - ./gradlew assemble -Puser=$BINTRAY_USER -Pkey=$BINTRAY_KEY
+
+# jobs:
+#   include:
+#     - stage: compile
+#     - stage: deploy
+
+# stages:
+#   - compile
+#   - name: deploy
+#     if: tag IS present
 
 deploy:
   - provider: script
