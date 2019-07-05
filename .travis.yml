@@ -8,6 +8,8 @@ jdk:
   - oraclejdk8
 
 script:
+  - mkdir -p src/main/java
+  - shopt -s globstar
   - docker run --rm
       -v $(pwd):$(pwd)
       -w $(pwd)
