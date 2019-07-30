@@ -8,7 +8,7 @@ option java_multiple_files = true;
 option java_outer_classname = "NewsServiceProto";
 option java_package = "de.hpi.cloud.news.v1test";
 
-// Provides access to news from various sources, e.g. HPI News an HPImgzn.
+// Provides access to news from various sources, e.g. HPI News and HPImgzn.
 service NewsService {
   // Lists articles.
   rpc ListArticles (ListArticlesRequest) returns (ListArticlesResponse);
@@ -40,18 +40,12 @@ service NewsService {
 
 // Request message for listing articles using [ListArticles][hpi.cloud.news.v1test.NewsService.ListArticles].
 message ListArticlesRequest {
-  // Optional.
-  //
   // If specified, only articles from this site are returned.
   string site_id = 1;
 
-  // Optional.
-  //
   // If specified, only articles from this category are returned.
   string category_id = 2;
 
-  // Optional.
-  //
   // If specified, only articles tagged with this tag are returned.
   string tag_id = 3;
 }
@@ -63,9 +57,7 @@ message ListArticlesResponse {
 
 // Request message for [GetArticle][hpi.cloud.news.v1test.NewsService.GetArticle].
 message GetArticleRequest {
-  // Required.
-  //
-  // The article ID.
+  // Required. The article ID.
   string id = 1;
 }
 
@@ -81,9 +73,7 @@ message ListSourcesResponse {
 
 // Request message for [GetSource][hpi.cloud.news.v1test.NewsService.GetSource].
 message GetSourceRequest {
-  // Required.
-  //
-  // The source ID.
+  // Required. The source ID.
   string id = 1;
 }
 
@@ -99,9 +89,7 @@ message ListCategoriesResponse {
 
 // Request message for [GetCategory][hpi.cloud.news.v1test.NewsService.GetCategory].
 message GetCategoryRequest {
-  // Required.
-  //
-  // The category ID.
+  // Required. The category ID.
   string id = 1;
 }
 
@@ -117,8 +105,6 @@ message ListTagsResponse {
 
 // Request message for [GetTag][hpi.cloud.news.v1test.NewsService.GetTag].
 message GetTagRequest {
-  // Required.
-  //
-  // The tag ID.
+  // Required. The tag ID.
   string id = 1;
 }
