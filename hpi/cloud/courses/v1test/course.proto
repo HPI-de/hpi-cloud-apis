@@ -1,0 +1,109 @@
+syntax = "proto3";
+
+package hpi.cloud.courses.v1test;
+
+// A series of courses that cover the same topic and can take place on multiple
+// semesters.
+message CourseSeries {
+    // Required, output only. The unique ID of this course.
+  string id = 1;
+
+  // Required. The title.
+  string title = 2;
+
+  // Required. A short version of the title.
+  string short_title = 3;
+
+  // Required. An abbreviation of the title.
+  string abbreviation = 4;
+
+  // Required. The number of ECTS that the courses of this series give to the
+  // participants.
+  sint32 ects = 5;
+
+  // Required. The hours per week that courses of this series typically require.
+  sint32 hoursPerWeek = 6;
+
+  // Required. Whether it's mandatory to particiapte in a course of this series.
+  bool mandatory = 7;
+
+  // The language courses of this series are taught in.
+  string language = 8;
+
+  enum Type {
+    LECTURE = 0;
+    SEMINAR = 1;
+    BLOCK_SEMINAR = 2;
+    EXERCISE = 3;
+  }
+
+  // Optional. IDs of the types of this course series.
+  repeated Type type_ids = 9;
+}
+
+// A semester.
+message Semester {
+  // Required, output only. The unique ID of this semester.
+  string id = 1;
+
+  // Required. The term.
+  string term = 2;
+
+  // Required. The year.
+  sint64 year = 3;
+}
+
+// A course.
+message Course {
+  // Required, output only. The unique ID of this semester.
+  string id = 1;
+
+  // Required. The ID of the course series that this course is an instance of.
+  string course_series_id = 2;
+
+  // Required. The ID of the semester that this course takes place in.
+  string semester_id = 3;
+
+  // Required. The lecturer.
+  string lecturer = 4;
+
+  // Optional. The assistants.
+  repeated string assistants = 5;
+
+  // Optional. A website that contains more information about the course.
+  string website = 6;
+}
+
+// Details on a course.
+message CourseDetail {
+  // Required, output only. The unique ID of this semester.
+  string id = 1;
+
+  // Required. A link to the course on teletask.
+  string teletask = 2;
+
+  message ProgramList {
+    repeated string programs = 1;
+  }
+
+  // Required. Programs.
+  map<string, ProgramList> programs = 3;
+
+  // Required. A description.
+  string description = 4;
+
+  // Optional. Requirements to participate in this course.
+  string requirements = 5;
+
+  // Optional. What you'll learn by participating in this course.
+  string learning = 6;
+
+  // Optional. Which and how many exams take place.
+  string examination = 7;
+
+  // Optional. When the course takes place.
+  string dates = 8;
+
+  // Optional. Additional literature for this course.
+  string literature = 9;
+}
