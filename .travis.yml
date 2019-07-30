@@ -17,7 +17,6 @@ script:
       --plugin=protoc-gen-grpc=/usr/bin/protoc-gen-grpc-java
       --java_out=./src/main/java
       --grpc_out=./src/main/java
-      --dart_out=./lib/proto
       -I.
       ./hpi/**/*.proto
   - ./gradlew assemble
