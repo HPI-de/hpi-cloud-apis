@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package hpi.cloud.news.v1test;
+
+import "google/protobuf/timestamp.proto";
+
+// A restaurant that serves food.
+message Restaurant {
+  // Required, output only. The unique ID of this restaurant.
+  string id = 1;
+
+  // Required. The name of this restaurant.
+  string name = 2;
+}
+
+// An item on a menu.
+message MenuItem {
+  // Required, output only. The unique ID of this menu.
+  string id = 1;
+
+  // Required. The date of when this menu was/will be served.
+  google.protobuf.Timestamp date = 2;
+
+  // Required. ID of the restaurant where this menu was/will be served.
+  string restaurant_id = 3;
+
+  // Required. The title.
+  string title = 4;
+
+  // Optional. An optional substitution that's offered to the hungry consumer.
+  string substitution = 5;
+
+  // Required. The price to pay for this item.
+  float price = 6;
+
+  // Optional. The counter where this item is served.
+  string counter = 7;
+
+  // Optional. IDs of the labels of the item.
+  repeated string label_ids = 8;
+}
+
+// A label on a menu item.
+message Label {
+  // Required, output only. The unique ID of this label.
+  string id = 1;
+
+  // Required. The title of this label.
+  string title = 2;
+}
