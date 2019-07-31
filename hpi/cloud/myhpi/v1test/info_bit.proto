@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package hpi.cloud.news.v1test;
+package hpi.cloud.myhpi.v1test;
 
-// A bit of information to show the user on the MyHPI screen.
+// A bit of information to show in a MyHPI context.
 message InfoBit {
   // Required, output only. The unique ID of this info bit.
   string id = 1;
@@ -10,8 +10,8 @@ message InfoBit {
   // Required. The title.
   string title = 2;
 
-  // Required. The text.
-  string text = 3;
+  // Required. The description.
+  string description = 3;
 
   // Optional. IDs of the actions of this info bit.
   repeated string action_ids = 4;
