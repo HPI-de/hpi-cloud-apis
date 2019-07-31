@@ -1,21 +1,21 @@
 syntax = "proto3";
 
-package hpi.cloud.news.v1test;
+package hpi.cloud.food.v1test;
 
 import "google/protobuf/timestamp.proto";
 
 // A restaurant that serves food.
 message Restaurant {
-  // Required, output only. The unique ID of this restaurant.
+  // Required, output only. The unique ID.
   string id = 1;
 
-  // Required. The name of this restaurant.
-  string name = 2;
+  // Required. The title.
+  string title = 2;
 }
 
 // An item on a menu.
 message MenuItem {
-  // Required, output only. The unique ID of this menu.
+  // Required, output only. The unique ID.
   string id = 1;
 
   // Required. The date of when this menu was/will be served.
@@ -42,9 +42,9 @@ message MenuItem {
 
 // A label on a menu item.
 message Label {
-  // Required, output only. The unique ID of this label.
+  // Required, output only. The unique ID.
   string id = 1;
 
-  // Required. The title of this label.
+  // Required. The title.
   string title = 2;
 }
