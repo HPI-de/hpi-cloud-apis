@@ -10,6 +10,7 @@ jdk:
 script:
   - cd ..
   - git clone https://github.com/googleapis/api-common-protos.git
+  - rm -r ./api-common-protos/google/api/ ./api-common-protos/google/rpc/
   - mkdir -p ./hpi-cloud-apis/src/main/java
   - shopt -s globstar
   - docker run --rm
