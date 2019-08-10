@@ -8,17 +8,23 @@ jdk:
   - oraclejdk8
 
 script:
-  - mkdir -p src/main/java
+  - cd ..
+  - git clone https://github.com/googleapis/api-common-protos.git
+  - rm -r ./api-common-protos/google/api/ ./api-common-protos/google/rpc/
+  - mkdir -p ./hpi-cloud-apis/src/main/java
   - shopt -s globstar
   - docker run --rm
       -v $(pwd):$(pwd)
       -w $(pwd)
-      znly/protoc
+      thethingsindustries/protoc
       --plugin=protoc-gen-grpc=/usr/bin/protoc-gen-grpc-java
-      --java_out=./src/main/java
-      --grpc_out=./src/main/java
-      -I.
-      ./hpi/**/*.proto
+      --java_out=./hpi-cloud-apis/src/main/java
+      --grpc_out=./hpi-cloud-apis/src/main/java
+      --proto_path=./hpi-cloud-apis
+      --proto_path=./api-common-protos
+      ./hpi-cloud-apis/**/*.proto
+      ./api-common-protos/**/*.proto
+  - cd ./hpi-cloud-apis
   - ./gradlew assemble
 
 deploy:
