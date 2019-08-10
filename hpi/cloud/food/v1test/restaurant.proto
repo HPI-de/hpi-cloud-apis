@@ -5,6 +5,10 @@ package hpi.cloud.food.v1test;
 import "google/type/date.proto";
 import "google/type/money.proto";
 
+option java_multiple_files = true;
+option java_outer_classname = "RestaurantProto";
+option java_package = "de.hpi.cloud.food.v1test";
+
 // A restaurant that serves food.
 message Restaurant {
   // Required, output only. The unique ID.
@@ -19,11 +23,11 @@ message MenuItem {
   // Required, output only. The unique ID.
   string id = 1;
 
-  // Required. The date of when this menu was/will be served.
-  google.type.Date date = 2;
-
   // Required. ID of the restaurant where this menu was/will be served.
-  string restaurant_id = 3;
+  string restaurant_id = 2;
+
+  // Required. The date of when this menu was/will be served.
+  google.type.Date date = 3;
 
   // Required. The title.
   string title = 4;
