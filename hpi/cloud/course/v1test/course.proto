@@ -1,20 +1,20 @@
 syntax = "proto3";
 
-package hpi.cloud.courses.v1test;
+package hpi.cloud.course.v1test;
 
 // A series of courses that cover the same topic and can take place on multiple
 // semesters.
 message CourseSeries {
-    // Required, output only. The unique ID of this course.
+  // Required, output only. The unique ID of this course.
   string id = 1;
 
-  // Required. The title.
+  // Required. The title, e.g. "Internet- and WWW-Technologies".
   string title = 2;
 
-  // Required. A short version of the title.
+  // Required. A short version of the title, e.g. "Internet and WWW".
   string short_title = 3;
 
-  // Required. An abbreviation of the title.
+  // Required. An abbreviation of the title, e.g. "WWW".
   string abbreviation = 4;
 
   // Required. The number of ECTS that the courses of this series give to the
@@ -22,12 +22,12 @@ message CourseSeries {
   sint32 ects = 5;
 
   // Required. The hours per week that courses of this series typically require.
-  sint32 hoursPerWeek = 6;
+  sint32 hours_per_week = 6;
 
   // Required. Whether it's mandatory to particiapte in a course of this series.
   bool mandatory = 7;
 
-  // The language courses of this series are taught in.
+  // The language courses of this series are taught in. Must be a valid [BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) language tag.
   string language = 8;
 
   enum Type {
@@ -37,8 +37,8 @@ message CourseSeries {
     EXERCISE = 3;
   }
 
-  // Optional. IDs of the types of this course series.
-  repeated Type type_ids = 9;
+  // Types of this course series.
+  repeated Type types = 9;
 }
 
 // A semester.
@@ -46,8 +46,13 @@ message Semester {
   // Required, output only. The unique ID of this semester.
   string id = 1;
 
+  enum Term {
+    WINTER = 0;
+    SUMMER = 1;
+  }
+
   // Required. The term.
-  string term = 2;
+  Term term = 2;
 
   // Required. The year.
   sint64 year = 3;
@@ -55,7 +60,7 @@ message Semester {
 
 // A course.
 message Course {
-  // Required, output only. The unique ID of this semester.
+  // Required, output only. The unique ID of this course.
   string id = 1;
 
   // Required. The ID of the course series that this course is an instance of.
@@ -74,10 +79,10 @@ message Course {
   string website = 6;
 }
 
-// Details on a course.
+// Details of a course.
 message CourseDetail {
-  // Required, output only. The unique ID of this semester.
-  string id = 1;
+  // Required. The unique ID of course these details belong to.
+  string course_id = 1;
 
   // Required. A link to the course on teletask.
   string teletask = 2;
@@ -86,24 +91,24 @@ message CourseDetail {
     repeated string programs = 1;
   }
 
-  // Required. Programs.
+  // Required. Programs this course can be graded in.
   map<string, ProgramList> programs = 3;
 
-  // Required. A description.
+  // Required. A description (HTML).
   string description = 4;
 
-  // Optional. Requirements to participate in this course.
+  // Requirements to participate in this course (HTML).
   string requirements = 5;
 
-  // Optional. What you'll learn by participating in this course.
+  // What you'll learn by participating in this course (HTML).
   string learning = 6;
 
-  // Optional. Which and how many exams take place.
+  // Which and how many exams take place (HTML).
   string examination = 7;
 
-  // Optional. When the course takes place.
+  // When the course takes place (HTML).
   string dates = 8;
 
-  // Optional. Additional literature for this course.
+  // Additional literature for this course (HTML).
   string literature = 9;
 }
