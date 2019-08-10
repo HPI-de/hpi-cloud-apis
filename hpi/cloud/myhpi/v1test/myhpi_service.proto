@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package hpi.cloud.myhpi.v1test;
+
+import "hpi/cloud/myhpi/v1test/info_bit.proto";
+
+option java_multiple_files = true;
+option java_outer_classname = "MyHpiServiceProto";
+option java_package = "de.hpi.cloud.myhpi.v1test";
+
+// Provides access to useful information, mostly originating from MyHPI.
+service MyHpiService {
+  // Lists bits of information.
+  rpc ListInfoBits (ListInfoBitsRequest) returns (ListInfoBitsResponse);
+
+  // Gets a bit of information.
+  rpc GetInfoBit (GetInfoBitRequest) returns (InfoBit);
+
+
+  // Lists actions.
+  rpc ListActions (ListActionsRequest) returns (ListActionsResponse);
+
+  // Gets a action.
+  rpc GetAction (GetActionRequest) returns (Action);
+}
+
+// Request message for listing bits of information using [ListInfoBits][hpi.cloud.myhpi.v1test.MyHpiService.ListInfoBits].
+message ListInfoBitsRequest {
+}
+
+// Response message for listing bits of information using [ListInfoBits][hpi.cloud.myhpi.v1test.MyHpiService.ListInfoBits].
+message ListInfoBitsResponse {
+  repeated InfoBit info_bits = 1;
+}
+
+// Request message for [GetInfoBit][hpi.cloud.myhpi.v1test.MyHpiService.GetInfoBit].
+message GetInfoBitRequest {
+  // Required. The InfoBit ID.
+  string id = 1;
+}
+
+
+// Request message for listing actions using [ListActions][hpi.cloud.myhpi.v1test.MyHpiService.ListActions].
+message ListActionsRequest {
+}
+
+// Response message for listing actions using [ListActions][hpi.cloud.myhpi.v1test.MyHpiService.ListActions].
+message ListActionsResponse {
+  repeated Action Actions = 1;
+}
+
+// Request message for [GetAction][hpi.cloud.myhpi.v1test.MyHpiService.GetAction].
+message GetActionRequest {
+  // Required. The action ID.
+  string id = 1;
+}

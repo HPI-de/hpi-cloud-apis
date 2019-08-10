@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package hpi.cloud.myhpi.v1test;
+
+// A bit of information to show in a MyHPI context.
+message InfoBit {
+  // Required, output only. The unique ID of this info bit.
+  string id = 1;
+
+  // Required. The title.
+  string title = 2;
+
+  // Required. The description.
+  string description = 3;
+
+  // Optional. IDs of the actions of this info bit.
+  repeated string action_ids = 4;
+}
+
+// An action of an info bit.
+message Action {
+  // Required, output only. The unique ID of this info bit.
+  string id = 1;
+
+  // Required. The title.
+  string title = 2;
+
+  message Link {
+    // Required. The URL.
+    string url = 1;
+  }
+  
+  message Text {
+    // Required. The text to show.
+    string content = 1;
+  }
+
+  oneof type {
+    Link link = 3;
+    Text text = 4;
+  }
+}
