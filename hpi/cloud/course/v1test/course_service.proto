@@ -1,0 +1,107 @@
+syntax = "proto3";
+
+package hpi.cloud.course.v1test;
+
+import "hpi/cloud/course/v1test/course.proto";
+
+option java_multiple_files = true;
+option java_outer_classname = "CourseServiceProto";
+option java_package = "de.hpi.cloud.course.v1test";
+
+// Provides access course information.
+service CourseService {
+  // Lists course series.
+  rpc ListCourseSeries (ListCourseSeriesRequest) returns (ListCourseSeriesResponse);
+
+  // Gets a course serie.
+  rpc GetCourseSeries (GetCourseSeriesRequest) returns (CourseSeries);
+
+
+  // Lists semesters.
+  rpc ListSemesters (ListSemestersRequest) returns (ListSemestersResponse);
+
+  // Gets a semester.
+  rpc GetSemester (GetSemesterRequest) returns (Semester);
+
+
+  // Lists courses.
+  rpc ListCourses (ListCoursesRequest) returns (ListCoursesResponse);
+
+  // Gets a course.
+  rpc GetCourse (GetCourseRequest) returns (Course);
+
+
+  // Lists course details.
+  rpc ListCourseDetails (ListCourseDetailsRequest) returns (ListCourseDetailsResponse);
+
+  // Gets details for a course.
+  rpc GetCourseDetail (GetCourseDetailRequest) returns (CourseDetail);
+}
+
+// Request message for listing course series using [ListCourseSeries][hpi.cloud.course.v1test.CourseService.ListCourseSeries].
+message ListCourseSeriesRequest {
+}
+
+// Response message for listing CourseSeries using [ListCourseSeries][hpi.cloud.course.v1test.CourseService.ListCourseSeries].
+message ListCourseSeriesResponse {
+  repeated CourseSeries course_series = 1;
+}
+
+// Request message for [GetCourseSeries][hpi.cloud.course.v1test.CourseService.GetCourseSeries].
+message GetCourseSeriesRequest {
+  // Required. The course series ID.
+  string id = 1;
+}
+
+
+// Request message for listing semesters using [ListSemesters][hpi.cloud.course.v1test.CourseService.ListSemesters].
+message ListSemestersRequest {
+}
+
+// Response message for listing semesters using [ListSemesters][hpi.cloud.course.v1test.CourseService.ListSemesters].
+message ListSemestersResponse {
+  repeated Semester semesters = 1;
+}
+
+// Request message for [GetSemester][hpi.cloud.course.v1test.CourseService.GetSemester].
+message GetSemesterRequest {
+  // Required. The semester ID.
+  string id = 1;
+}
+
+
+// Request message for listing courses using [ListCourses][hpi.cloud.course.v1test.CourseService.ListCourses].
+message ListCoursesRequest {
+  // If specified, only courses of this series are returned.
+  string course_series_id = 1;
+
+  // If specified, only courses offered in this semester are returned.
+  string semester_id = 2;
+}
+
+// Response message for listing courses using [ListCourses][hpi.cloud.course.v1test.CourseService.ListCourses].
+message ListCoursesResponse {
+  repeated Course courses = 1;
+}
+
+// Request message for [GetCourse][hpi.cloud.course.v1test.CourseService.GetCourse].
+message GetCourseRequest {
+  // Required. The course ID.
+  string id = 1;
+}
+
+
+// Request message for listing course details using [ListCourseDetails][hpi.cloud.course.v1test.CourseService.ListCourseDetails].
+message ListCourseDetailsRequest {
+}
+
+// Response message for listing course details using [ListCourseDetails][hpi.cloud.course.v1test.CourseService.ListCourseDetails].
+message ListCourseDetailsResponse {
+  repeated CourseDetail details = 1;
+}
+
+// Request message for [GetCourseDetail][hpi.cloud.course.v1test.CourseService.GetCourseDetail].
+message GetCourseDetailRequest {
+  // Required. The ID of the course whose details to get.
+  string course_id = 1;
+}

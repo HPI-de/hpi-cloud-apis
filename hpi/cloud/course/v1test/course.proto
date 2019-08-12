@@ -1,0 +1,114 @@
+syntax = "proto3";
+
+package hpi.cloud.course.v1test;
+
+// A series of courses that cover the same topic and can take place on multiple
+// semesters.
+message CourseSeries {
+  // Required, output only. The unique ID of this course.
+  string id = 1;
+
+  // Required. The title, e.g. "Internet- and WWW-Technologies".
+  string title = 2;
+
+  // Required. A short version of the title, e.g. "Internet and WWW".
+  string short_title = 3;
+
+  // Required. An abbreviation of the title, e.g. "WWW".
+  string abbreviation = 4;
+
+  // Required. The number of ECTS that the courses of this series give to the
+  // participants.
+  sint32 ects = 5;
+
+  // Required. The hours per week that courses of this series typically require.
+  sint32 hours_per_week = 6;
+
+  // Required. Whether it's mandatory to particiapte in a course of this series.
+  bool mandatory = 7;
+
+  // The language courses of this series are taught in. Must be a valid [BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) language tag.
+  string language = 8;
+
+  enum Type {
+    LECTURE = 0;
+    SEMINAR = 1;
+    BLOCK_SEMINAR = 2;
+    EXERCISE = 3;
+  }
+
+  // Types of this course series.
+  repeated Type types = 9;
+}
+
+// A semester.
+message Semester {
+  // Required, output only. The unique ID of this semester.
+  string id = 1;
+
+  enum Term {
+    WINTER = 0;
+    SUMMER = 1;
+  }
+
+  // Required. The term.
+  Term term = 2;
+
+  // Required. The year.
+  sint64 year = 3;
+}
+
+// A course.
+message Course {
+  // Required, output only. The unique ID of this course.
+  string id = 1;
+
+  // Required. The ID of the course series that this course is an instance of.
+  string course_series_id = 2;
+
+  // Required. The ID of the semester that this course takes place in.
+  string semester_id = 3;
+
+  // Required. The lecturer.
+  string lecturer = 4;
+
+  // Optional. The assistants.
+  repeated string assistants = 5;
+
+  // Optional. A website that contains more information about the course.
+  string website = 6;
+}
+
+// Details of a course.
+message CourseDetail {
+  // Required. The unique ID of course these details belong to.
+  string course_id = 1;
+
+  // Required. A link to the course on teletask.
+  string teletask = 2;
+
+  message ProgramList {
+    repeated string programs = 1;
+  }
+
+  // Required. Programs this course can be graded in.
+  map<string, ProgramList> programs = 3;
+
+  // Required. A description (HTML).
+  string description = 4;
+
+  // Requirements to participate in this course (HTML).
+  string requirements = 5;
+
+  // What you'll learn by participating in this course (HTML).
+  string learning = 6;
+
+  // Which and how many exams take place (HTML).
+  string examination = 7;
+
+  // When the course takes place (HTML).
+  string dates = 8;
+
+  // Additional literature for this course (HTML).
+  string literature = 9;
+}

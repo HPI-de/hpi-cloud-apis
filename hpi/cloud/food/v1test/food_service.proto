@@ -1,0 +1,85 @@
+syntax = "proto3";
+
+package hpi.cloud.food.v1test;
+
+import "google/type/date.proto";
+import "hpi/cloud/food/v1test/restaurant.proto";
+
+option java_multiple_files = true;
+option java_outer_classname = "FoodServiceProto";
+option java_package = "de.hpi.cloud.food.v1test";
+
+// Provides access to food served at restaurants like the canteen and Ulf's Café.
+service FoodService {
+  // Lists restaurants.
+  rpc ListRestaurants (ListRestaurantsRequest) returns (ListRestaurantsResponse);
+
+  // Gets a restaurant.
+  rpc GetRestaurant (GetRestaurantRequest) returns (Restaurant);
+
+
+  // Lists items on the menu.
+  rpc ListMenuItems (ListMenuItemsRequest) returns (ListMenuItemsResponse);
+
+  // Gets an item as it appears on the menu.
+  rpc GetMenuItem (GetMenuItemRequest) returns (MenuItem);
+
+
+  // Lists labels.
+  rpc ListLabels (ListLabelsRequest) returns (ListLabelsResponse);
+
+  // Gets a label.
+  rpc GetLabel (GetLabelRequest) returns (Label);
+}
+
+// Request message for listing restaurants using [ListRestaurants][hpi.cloud.food.v1test.FoodService.ListRestaurants].
+message ListRestaurantsRequest {
+}
+
+// Response message for listing restaurants using [ListRestaurants][hpi.cloud.food.v1test.FoodService.ListRestaurants].
+message ListRestaurantsResponse {
+  repeated Restaurant restaurants = 1;
+}
+
+// Request message for [GetRestaurant][hpi.cloud.food.v1test.FoodService.GetRestaurant].
+message GetRestaurantRequest {
+  // Required. The restaurant ID.
+  string id = 1;
+}
+
+
+// Request message for listing items on the menu using [ListMenuItems][hpi.cloud.food.v1test.FoodService.ListMenuItems].
+message ListMenuItemsRequest {
+  // If specified, only menu items served at this restaurant are returned.
+  string restaurant_id = 1;
+  
+  // If specified, only menu items served on this day are returned.
+  google.type.Date date = 2;
+}
+
+// Response message for listing MenuItems using [ListMenuItems][hpi.cloud.food.v1test.FoodService.ListMenuItems].
+message ListMenuItemsResponse {
+  repeated MenuItem items = 1;
+}
+
+// Request message for [GetMenuItem][hpi.cloud.food.v1test.FoodService.GetMenuItem].
+message GetMenuItemRequest {
+  // Required. The ID of the menu item.
+  string id = 1;
+}
+
+
+// Request message for listing labels using [ListLabels][hpi.cloud.food.v1test.FoodService.ListLabels].
+message ListLabelsRequest {
+}
+
+// Response message for listing Labels using [ListLabels][hpi.cloud.food.v1test.FoodService.ListLabels].
+message ListLabelsResponse {
+  repeated Label Labels = 1;
+}
+
+// Request message for [GetLabel][hpi.cloud.food.v1test.FoodService.GetLabel].
+message GetLabelRequest {
+  // Required. The label ID.
+  string id = 1;
+}

@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package hpi.cloud.food.v1test;
+
+import "google/type/date.proto";
+import "google/type/money.proto";
+
+option java_multiple_files = true;
+option java_outer_classname = "RestaurantProto";
+option java_package = "de.hpi.cloud.food.v1test";
+
+// A restaurant that serves food.
+message Restaurant {
+  // Required, output only. The unique ID.
+  string id = 1;
+
+  // Required. The title.
+  string title = 2;
+}
+
+// An item on a menu.
+message MenuItem {
+  // Required, output only. The unique ID.
+  string id = 1;
+
+  // Required. ID of the restaurant where this menu was/will be served.
+  string restaurant_id = 2;
+
+  // Required. The date of when this menu was/will be served.
+  google.type.Date date = 3;
+
+  // Required. The title.
+  string title = 4;
+
+  // Optional. An optional substitution that's offered to the hungry consumer.
+  string substitution = 5;
+
+  // Required. The price to pay for this item.
+  google.type.Money price = 6;
+
+  // Optional. The counter where this item is served.
+  string counter = 7;
+
+  // Optional. IDs of the labels of the item.
+  repeated string label_ids = 8;
+}
+
+// A label on a menu item.
+message Label {
+  // Required, output only. The unique ID.
+  string id = 1;
+
+  // Required. The title.
+  string title = 2;
+
+  // The URL pointing to an icon.
+  string icon = 3;
+}

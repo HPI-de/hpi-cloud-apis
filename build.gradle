@@ -1,0 +1,96 @@
+plugins {
+    id 'java-library'
+    id "maven-publish"
+    id "com.jfrog.bintray" version "1.8.4"
+}
+
+repositories {
+    mavenLocal()
+    jcenter()
+}
+dependencies {
+    api("com.google.protobuf:protobuf-java:3.8.0")
+    // implementation as Android clients will replace this with grpc-protobuf-lite
+    implementation("io.grpc:grpc-protobuf:1.21.0")
+    api("io.grpc:grpc-stub:1.21.0")
+    // implementation as Android clients will replace this with grpc-okhttp
+    implementation("io.grpc:grpc-netty:1.21.0")
+}
+
+// Publishing config
+ext {
+    bintrayOrg = 'hpi'
+    bintrayRepo = 'hpi-cloud-mvn'
+    bintrayName = 'hpi-cloud'
+
+    publishedGroupId = 'de.hpi.cloud'
+    artifact = 'hpi-cloud'
+
+    description = "Auto-generated client libraries for HPI Cloud"
+
+    siteUrl = 'https://github.com/HPI-de/hpi-cloud-apis'
+    issueUrl = 'https://github.com/HPI-de/hpi-cloud-apis/issues'
+    gitUrl = 'https://github.com/HPI-de/hpi-cloud-apis.git'
+    githubRepository = 'HPI-de/hpi-cloud-apis'
+    githubReleaseNotes = 'CHANGELOG.md'
+    allLicenses = ["Apache-2.0"]
+
+    libraryVersion = "0.0.3"
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+javadoc.failOnError = false
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}
+publishing {
+    publications {
+        all(MavenPublication) {
+            from components.java
+            artifact sourcesJar {
+                classifier "sources"
+            }
+            artifact javadocJar {
+                classifier "javadoc"
+            }
+
+            groupId publishedGroupId
+            artifactId artifact
+            version libraryVersion
+        }
+    }
+}
+bintray {
+    user = System.getenv('BINTRAY_USER') 
+    key = System.getenv('BINTRAY_KEY') 
+
+    publications = ["all"]
+    publish = true
+    pkg {
+        repo = bintrayRepo
+        name = bintrayName
+        userOrg = bintrayOrg
+        desc = description
+        websiteUrl = siteUrl
+        issueTrackerUrl = issueUrl
+        vcsUrl = gitUrl
+        licenses = allLicenses
+
+        githubRepo = githubRepository
+        githubReleaseNotesFile = githubReleaseNotes
+
+        version {
+            name = libraryVersion
+            vcsTag = libraryVersion
+        }
+    }
+}
+bintrayUpload.dependsOn generatePomFileForAllPublication
