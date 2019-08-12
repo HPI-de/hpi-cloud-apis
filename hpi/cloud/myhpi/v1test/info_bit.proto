@@ -2,6 +2,10 @@ syntax = "proto3";
 
 package hpi.cloud.myhpi.v1test;
 
+option java_multiple_files = true;
+option java_outer_classname = "InfoBitProto";
+option java_package = "de.hpi.cloud.myhpi.v1test";
+
 // A bit of information to show in a MyHPI context.
 message InfoBit {
   // Required, output only. The unique ID of this info bit.

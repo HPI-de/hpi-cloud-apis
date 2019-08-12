@@ -7,5 +7,5 @@ description: "This repository contains the original interface definitions of pub
   \ definitions can provide a better understanding of HPI Cloud APIs and help you\
   \ to utilize them more efficiently. You can also use these definitions with open\
   \ source tools to generate client libraries, documentation, and other artifacts."
-version: "0.0.3"
+version: "0.0.4"
 githubName: "HPI-de/hpi-cloud-apis"
