@@ -76,10 +76,10 @@ message Course {
   // Required. The lecturer.
   string lecturer = 4;
 
-  // Optional. The assistants.
+  // The assistants.
   repeated string assistants = 5;
 
-  // Optional. A website that contains more information about the course.
+  // A website that contains more information about the course.
   string website = 6;
 }
 
@@ -88,7 +88,7 @@ message CourseDetail {
   // Required. The unique ID of course these details belong to.
   string course_id = 1;
 
-  // Required. A link to the course on teletask.
+  // A link to the course on teletask.
   string teletask = 2;
 
   message ProgramList {
@@ -98,7 +98,7 @@ message CourseDetail {
   // Required. Programs this course can be graded in.
   map<string, ProgramList> programs = 3;
 
-  // Required. A description (HTML).
+  // A description (HTML).
   string description = 4;
 
   // Requirements to participate in this course (HTML).
