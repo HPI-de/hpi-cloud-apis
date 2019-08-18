@@ -29,20 +29,26 @@ message MenuItem {
   // Required. The date of when this menu was/will be served.
   google.type.Date date = 3;
 
+  // The counter where this item is served.
+  string counter = 4;
+
+  // Required. The price to pay for this item, depending on the customer (e.g. student, guest, default ...).
+  map<string, google.type.Money> prices = 5;
+
   // Required. The title.
-  string title = 4;
+  string title = 6;
 
-  // Optional. An optional substitution that's offered to the hungry consumer.
-  string substitution = 5;
+  // IDs of the labels of the item.
+  repeated string label_ids = 7;
 
-  // Required. The price to pay for this item.
-  google.type.Money price = 6;
+  message Substitution {
+    string title = 1;
 
-  // Optional. The counter where this item is served.
-  string counter = 7;
+    repeated string label_ids = 2;
+  }
 
-  // Optional. IDs of the labels of the item.
-  repeated string label_ids = 8;
+  // An optional substitution that's offered to the hungry consumer.
+  Substitution substitution = 8;
 }
 
 // A label on a menu item.
