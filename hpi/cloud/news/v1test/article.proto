@@ -3,6 +3,7 @@ syntax = "proto3";
 package hpi.cloud.news.v1test;
 
 import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
 import "hpi/cloud/common/v1test/image.proto";
 
 option java_multiple_files = true;
@@ -12,7 +13,7 @@ option java_package = "de.hpi.cloud.news.v1test";
 
 // A news article, e.g. from HPI News and HPImgzn.
 message Article {
-  // Required, output only. The unique ID (across sites) of this article.
+  // Required, output only. The unique ID (across sources) of this article.
   string id = 1;
 
   // Required. ID of the original source of this article.
@@ -46,7 +47,7 @@ message Article {
   repeated Tag tags = 11;
 
   // The number of times this article was viewed.
-  uint32 view_count = 12;
+  google.protobuf.UInt32Value view_count = 12;
 }
 
 // An article source, e.g. HPI News or HPImgzn.
@@ -54,8 +55,8 @@ message Source {
   // Required, output only. The unique ID of this source.
   string id = 1;
 
-  // Required. The name of this source.
-  string name = 2;
+  // Required. The title of this source.
+  string title = 2;
 
   // Required. The url of this source.
   string link = 3;
@@ -66,8 +67,8 @@ message Category {
   // Required, output only. The unique ID of this category.
   string id = 1;
 
-  // Required. The name of this category.
-  string name = 2;
+  // Required. The title of this category.
+  string title = 2;
 }
 
 // A tag by which articles can be organized and filtered.
@@ -75,8 +76,8 @@ message Tag {
   // Required, output only. The unique ID of this tag.
   string id = 1;
 
-  // Required. The name of this tag.
-  string name = 2;
+  // Required. The title of this tag.
+  string title = 2;
 
   // Required. The number of articles tagged with this tag.
   uint32 article_count = 3;

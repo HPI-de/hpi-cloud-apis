@@ -17,7 +17,7 @@ message InfoBit {
   // Required. The description.
   string description = 3;
 
-  // Optional. IDs of the actions of this info bit.
+  // IDs of the actions of this info bit.
   repeated string action_ids = 4;
 }
 
@@ -29,18 +29,21 @@ message Action {
   // Required. The title.
   string title = 2;
 
+  // The URL pointing to an icon.
+  string icon = 3;
+
   message Link {
     // Required. The URL.
     string url = 1;
   }
   
   message Text {
-    // Required. The text to show.
+    // Required. The text to show (HTML).
     string content = 1;
   }
 
   oneof type {
-    Link link = 3;
-    Text text = 4;
+    Link link = 4;
+    Text text = 5;
   }
 }

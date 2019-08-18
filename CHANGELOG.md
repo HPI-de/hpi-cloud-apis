@@ -19,6 +19,25 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 
+## [0.0.5] - 2019-08-18
+### BREAKING CHANGES
+- **course:** make CourseSeries more strict
+- **course:** make CourseDetail teletask + description optional
+- **food:** add details to substitution
+- **food:** support different prices for different customers
+- **news:** rename Source, Category, Tag name to title
+- **news:** make Article.view_count nullable
+- **news:** rename remaining site occurrences to source
+- **news:** make Semester.year an int32
+
+### Added
+- **common:** add Image.aspect_ratio
+- **myhpi:** add Action.icon
+
+### Documentation
+- **myhpi:** document that Action.Text.content can be HTML
+- **food:** remove unnecessary optional comments
+
 ## [0.0.4] - 2019-08-12
 ### Added
 - add documentation on how to generate Dart code
@@ -42,7 +61,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 Initial release with NewsService.
 
 
-[Unreleased]: https://github.com/HPI-de/hpi-cloud-apis/compare/0.0.4...dev
+[Unreleased]: https://github.com/HPI-de/hpi-cloud-apis/compare/0.0.5...dev
+[0.0.5]: https://github.com/HPI-de/hpi-cloud-apis/compare/0.0.4...0.0.5
 [0.0.4]: https://github.com/HPI-de/hpi-cloud-apis/compare/0.0.3...0.0.4
 [0.0.3]: https://github.com/HPI-de/hpi-cloud-apis/compare/0.0.2...0.0.3
 [0.0.2]: https://github.com/HPI-de/hpi-cloud-apis/compare/0.0.1...0.0.2

@@ -9,13 +9,12 @@ option java_package = "de.hpi.cloud.common.v1test";
 
 // An image including source and alt-text for accessibility.
 message Image {
-  // Required.
-  // 
-  // The source (URL) of this image.
+  // Required. The source (URL) of this image.
   string source = 1;
 
-  // Optional.
-  //
   // Alternative text describing the contents of this image.
   string alt = 2;
+
+  // The aspect ratio. Useful for showing a placeholder with the correct size.
+  float aspect_ratio = 3;
 }

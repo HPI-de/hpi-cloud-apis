@@ -31,7 +31,7 @@ message CourseSeries {
   // Required. Whether it's mandatory to particiapte in a course of this series.
   bool mandatory = 7;
 
-  // The language courses of this series are taught in. Must be a valid [BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) language tag.
+  // Required. The language courses of this series are taught in. Must be a valid [BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) language tag.
   string language = 8;
 
   enum Type {
@@ -41,7 +41,7 @@ message CourseSeries {
     EXERCISE = 3;
   }
 
-  // Types of this course series.
+  // Types of this course series. Must contain at least one value.
   repeated Type types = 9;
 }
 
@@ -59,7 +59,7 @@ message Semester {
   Term term = 2;
 
   // Required. The year.
-  sint64 year = 3;
+  int32 year = 3;
 }
 
 // A course.
@@ -76,10 +76,10 @@ message Course {
   // Required. The lecturer.
   string lecturer = 4;
 
-  // Optional. The assistants.
+  // The assistants.
   repeated string assistants = 5;
 
-  // Optional. A website that contains more information about the course.
+  // A website that contains more information about the course.
   string website = 6;
 }
 
@@ -88,7 +88,7 @@ message CourseDetail {
   // Required. The unique ID of course these details belong to.
   string course_id = 1;
 
-  // Required. A link to the course on teletask.
+  // A link to the course on teletask.
   string teletask = 2;
 
   message ProgramList {
@@ -98,7 +98,7 @@ message CourseDetail {
   // Required. Programs this course can be graded in.
   map<string, ProgramList> programs = 3;
 
-  // Required. A description (HTML).
+  // A description (HTML).
   string description = 4;
 
   // Requirements to participate in this course (HTML).
