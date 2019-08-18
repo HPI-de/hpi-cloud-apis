@@ -32,8 +32,8 @@ message MenuItem {
   // The counter where this item is served.
   string counter = 4;
 
-  // Required. The price to pay for this item.
-  google.type.Money price = 5;
+  // Required. The price to pay for this item, depending on the customer (e.g. student, guest, default ...).
+  map<string, google.type.Money> prices = 5;
 
   // Required. The title.
   string title = 6;
