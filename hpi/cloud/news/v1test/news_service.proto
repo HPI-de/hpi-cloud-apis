@@ -40,8 +40,8 @@ service NewsService {
 
 // Request message for listing articles using [ListArticles][hpi.cloud.news.v1test.NewsService.ListArticles].
 message ListArticlesRequest {
-  // If specified, only articles from this site are returned.
-  string site_id = 1;
+  // If specified, only articles from this source are returned.
+  string source_id = 1;
 
   // If specified, only articles from this category are returned.
   string category_id = 2;

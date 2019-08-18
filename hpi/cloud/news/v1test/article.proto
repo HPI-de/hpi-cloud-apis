@@ -13,7 +13,7 @@ option java_package = "de.hpi.cloud.news.v1test";
 
 // A news article, e.g. from HPI News and HPImgzn.
 message Article {
-  // Required, output only. The unique ID (across sites) of this article.
+  // Required, output only. The unique ID (across sources) of this article.
   string id = 1;
 
   // Required. ID of the original source of this article.
