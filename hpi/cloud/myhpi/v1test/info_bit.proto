@@ -38,7 +38,7 @@ message Action {
   }
   
   message Text {
-    // Required. The text to show.
+    // Required. The text to show (HTML).
     string content = 1;
   }
 
