@@ -59,7 +59,7 @@ message Semester {
   Term term = 2;
 
   // Required. The year.
-  sint64 year = 3;
+  int32 year = 3;
 }
 
 // A course.
