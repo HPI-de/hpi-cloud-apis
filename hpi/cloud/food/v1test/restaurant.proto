@@ -32,16 +32,16 @@ message MenuItem {
   // Required. The title.
   string title = 4;
 
-  // Optional. An optional substitution that's offered to the hungry consumer.
+  // An optional substitution that's offered to the hungry consumer.
   string substitution = 5;
 
   // Required. The price to pay for this item.
   google.type.Money price = 6;
 
-  // Optional. The counter where this item is served.
+  // The counter where this item is served.
   string counter = 7;
 
-  // Optional. IDs of the labels of the item.
+  // IDs of the labels of the item.
   repeated string label_ids = 8;
 }
 
