@@ -3,6 +3,7 @@ syntax = "proto3";
 package hpi.cloud.news.v1test;
 
 import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
 import "hpi/cloud/common/v1test/image.proto";
 
 option java_multiple_files = true;
@@ -46,7 +47,7 @@ message Article {
   repeated Tag tags = 11;
 
   // The number of times this article was viewed.
-  uint32 view_count = 12;
+  google.protobuf.UInt32Value view_count = 12;
 }
 
 // An article source, e.g. HPI News or HPImgzn.
