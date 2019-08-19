@@ -19,6 +19,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 
+## [0.0.6] - 2019-08-19
+### Added
+- **feedback:** add feedback definitions
+
 ## [0.0.5] - 2019-08-18
 ### BREAKING CHANGES
 - **course:** make CourseSeries more strict
@@ -61,7 +65,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 Initial release with NewsService.
 
 
-[Unreleased]: https://github.com/HPI-de/hpi-cloud-apis/compare/0.0.5...dev
+[Unreleased]: https://github.com/HPI-de/hpi-cloud-apis/compare/0.0.6...dev
+[0.0.6]: https://github.com/HPI-de/hpi-cloud-apis/compare/0.0.5...0.0.6
 [0.0.5]: https://github.com/HPI-de/hpi-cloud-apis/compare/0.0.4...0.0.5
 [0.0.4]: https://github.com/HPI-de/hpi-cloud-apis/compare/0.0.3...0.0.4
 [0.0.3]: https://github.com/HPI-de/hpi-cloud-apis/compare/0.0.2...0.0.3
