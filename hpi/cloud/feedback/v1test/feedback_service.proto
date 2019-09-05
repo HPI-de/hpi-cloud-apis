@@ -14,7 +14,7 @@ service FeedbackService {
   rpc CreateFeedback(CreateFeedbackRequest) returns (Feedback);
 }
 
-// Request message for creating feedback using [ListInfoBits][hpi.cloud.feedback.v1test.FeedbackService.ListInfoBits].
+// Request message for creating feedback using [CreateFeedback][hpi.cloud.feedback.v1test.FeedbackService.CreateFeedback].
 message CreateFeedbackRequest {
   // Required. The feedback to store.
   Feedback feedback = 1;
