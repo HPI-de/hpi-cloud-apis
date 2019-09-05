@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package hpi.cloud.crashreporting.v1test;
+
+import "hpi/cloud/crashreporting/v1test/crashreport.proto";
+
+option java_multiple_files = true;
+option java_outer_classname = "CrashReportingProto";
+option java_package = "de.hpi.cloud.crashreporting.v1test";
+
+// Collects crash reports from clients.
+service CrashReportingService {
+  // Create a crash report.
+  rpc CreateCrashReport(CreateCrashReportRequest) returns (CrashReport);
+}
+
+// Request message for creating a crash report using [CreateCrashReport][hpi.cloud.crashreporting.v1test.CrashReportService.CreateCrashReport].
+message CreateCrashReportRequest {
+  // Required. The crash report to store.
+  CrashReport crash_report = 1;
+}
