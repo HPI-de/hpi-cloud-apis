@@ -40,15 +40,6 @@ message MenuItem {
 
   // IDs of the labels of the item.
   repeated string label_ids = 7;
-
-  message Substitution {
-    string title = 1;
-
-    repeated string label_ids = 2;
-  }
-
-  // An optional substitution that's offered to the hungry consumer.
-  Substitution substitution = 8;
 }
 
 // A label on a menu item.
