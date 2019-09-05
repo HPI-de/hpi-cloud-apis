@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package hpi.cloud.crashreporting.v1test;
+
+import "google/protobuf/timestamp.proto";
+
+option java_multiple_files = true;
+option java_outer_classname = "CrashReportProto";
+option java_package = "de.hpi.cloud.crashreporting.v1test";
+
+
+// A crash report from a client.
+message CrashReport {
+  // Required, output only. The unique ID of this crash report.
+  string id = 1;
+
+  // Required. The app (or package) name, e.g. de.hpi.android.
+  string app_name = 2;
+
+  // Required. The version of this app, e.g. 1.2.5-alpha.2.
+  string app_version = 3;
+
+  // Required. The version code of this app, e.g. 10205102.
+  uint32 app_version_code = 4;
+
+  // The device a crash occurred on.
+  message Device {
+    // Required. The brand, e.g. Samsung.
+    string brand = 1;
+
+    // Required. The model, e.g. Galaxy S8+.
+    string model = 2;
+  }
+
+  // The device this crash occurred on.
+  Device device = 5;
+
+  // The OS a crash occurred on.
+  message OperatingSystem {
+    // Required. The OS name, e.g. Android.
+    string os = 1;
+
+    // Required. The OS version, e.g. 9.
+    string version = 2;
+  }
+
+  // The OS this crash occurred on.
+  OperatingSystem operating_system = 6;
+
+  // Required. The timestamp of when this crash occurred.
+  google.protobuf.Timestamp timestamp = 7;
+
+  // Required. The exception itself.
+  string exception = 8;
+
+  // Required. Stack trace of the exception.
+  string stack_trace = 9;
+
+  // Logs of what occurred before the exception.
+  string log = 10;
+}

@@ -19,6 +19,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 
+## [0.0.7] - 2019-09-05
+### BREAKING CHANGES
+- **course, food, news:** support pagination
+
+### Removed
+- **food:** remove MenuItem.substitution
+
 ## [0.0.6] - 2019-08-19
 ### Added
 - **feedback:** add feedback definitions
@@ -65,7 +72,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 Initial release with NewsService.
 
 
-[Unreleased]: https://github.com/HPI-de/hpi-cloud-apis/compare/0.0.6...dev
+[Unreleased]: https://github.com/HPI-de/hpi-cloud-apis/compare/0.0.7...dev
+[0.0.7]: https://github.com/HPI-de/hpi-cloud-apis/compare/0.0.6...0.0.7
 [0.0.6]: https://github.com/HPI-de/hpi-cloud-apis/compare/0.0.5...0.0.6
 [0.0.5]: https://github.com/HPI-de/hpi-cloud-apis/compare/0.0.4...0.0.5
 [0.0.4]: https://github.com/HPI-de/hpi-cloud-apis/compare/0.0.3...0.0.4

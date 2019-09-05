@@ -3,7 +3,7 @@ syntax = "proto3";
 package hpi.cloud.food.v1test;
 
 import "google/type/date.proto";
-import "hpi/cloud/food/v1test/restaurant.proto";
+import "hpi/cloud/food/v1test/food.proto";
 
 option java_multiple_files = true;
 option java_outer_classname = "FoodServiceProto";
@@ -34,11 +34,22 @@ service FoodService {
 
 // Request message for listing restaurants using [ListRestaurants][hpi.cloud.food.v1test.FoodService.ListRestaurants].
 message ListRestaurantsRequest {
+  // The maximum number of restaurants to return in the response.
+  int32 page_size = 1;
+
+  // A pagination token returned from a previous call to `ListRestaurants`
+  // that indicates where this listing should continue from.
+  string page_token = 2;
 }
 
 // Response message for listing restaurants using [ListRestaurants][hpi.cloud.food.v1test.FoodService.ListRestaurants].
 message ListRestaurantsResponse {
+  // A possibly paginated list of restaurants.
   repeated Restaurant restaurants = 1;
+
+  // Token to retrieve the next page of results, or empty if there are no
+  // more results.
+  string next_page_token = 2;
 }
 
 // Request message for [GetRestaurant][hpi.cloud.food.v1test.FoodService.GetRestaurant].
@@ -50,16 +61,28 @@ message GetRestaurantRequest {
 
 // Request message for listing items on the menu using [ListMenuItems][hpi.cloud.food.v1test.FoodService.ListMenuItems].
 message ListMenuItemsRequest {
+  // The maximum number of menu items to return in the response.
+  int32 page_size = 1;
+
+  // A pagination token returned from a previous call to `ListMenuItems`
+  // that indicates where this listing should continue from.
+  string page_token = 2;
+
   // If specified, only menu items served at this restaurant are returned.
-  string restaurant_id = 1;
+  string restaurant_id = 3;
   
   // If specified, only menu items served on this day are returned.
-  google.type.Date date = 2;
+  google.type.Date date = 4;
 }
 
 // Response message for listing MenuItems using [ListMenuItems][hpi.cloud.food.v1test.FoodService.ListMenuItems].
 message ListMenuItemsResponse {
+  // A possibly paginated list of menu items.
   repeated MenuItem items = 1;
+
+  // Token to retrieve the next page of results, or empty if there are no
+  // more results.
+  string next_page_token = 2;
 }
 
 // Request message for [GetMenuItem][hpi.cloud.food.v1test.FoodService.GetMenuItem].
@@ -71,11 +94,22 @@ message GetMenuItemRequest {
 
 // Request message for listing labels using [ListLabels][hpi.cloud.food.v1test.FoodService.ListLabels].
 message ListLabelsRequest {
+  // The maximum number of labels to return in the response.
+  int32 page_size = 1;
+
+  // A pagination token returned from a previous call to `ListLabels`
+  // that indicates where this listing should continue from.
+  string page_token = 2;
 }
 
 // Response message for listing Labels using [ListLabels][hpi.cloud.food.v1test.FoodService.ListLabels].
 message ListLabelsResponse {
+  // A possibly paginated list of labels.
   repeated Label Labels = 1;
+
+  // Token to retrieve the next page of results, or empty if there are no
+  // more results.
+  string next_page_token = 2;
 }
 
 // Request message for [GetLabel][hpi.cloud.food.v1test.FoodService.GetLabel].
