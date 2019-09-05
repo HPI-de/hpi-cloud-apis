@@ -23,6 +23,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### BREAKING CHANGES
 - **course, food, news:** support pagination
 
+### Added
+- **crashreporting:** add Crash Reporting definitions
+
 ### Removed
 - **food:** remove MenuItem.substitution
 
