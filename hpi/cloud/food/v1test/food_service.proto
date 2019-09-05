@@ -3,7 +3,7 @@ syntax = "proto3";
 package hpi.cloud.food.v1test;
 
 import "google/type/date.proto";
-import "hpi/cloud/food/v1test/restaurant.proto";
+import "hpi/cloud/food/v1test/food.proto";
 
 option java_multiple_files = true;
 option java_outer_classname = "FoodServiceProto";
