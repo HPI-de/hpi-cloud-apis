@@ -40,19 +40,22 @@ service NewsService {
 
 // Request message for listing articles using [ListArticles][hpi.cloud.news.v1test.NewsService.ListArticles].
 message ListArticlesRequest {
-  // If specified, only articles from this source are returned.
-  string source_id = 1;
+  // The maximum number of Articles to return in the response.
+  int32 page_size = 1;
 
-  // If specified, only articles from this category are returned.
-  string category_id = 2;
-
-  // If specified, only articles tagged with this tag are returned.
-  string tag_id = 3;
+  // A pagination token returned from a previous call to `ListArticles`
+  // that indicates where this listing should continue from.
+  string page_token = 2;
 }
 
 // Response message for listing articles using [ListArticles][hpi.cloud.news.v1test.NewsService.ListArticles].
 message ListArticlesResponse {
+  // A possibly paginated list of articles.
   repeated Article articles = 1;
+
+  // Token to retrieve the next page of results, or empty if there are no
+  // more results.
+  string next_page_token = 2;
 }
 
 // Request message for [GetArticle][hpi.cloud.news.v1test.NewsService.GetArticle].
@@ -64,11 +67,22 @@ message GetArticleRequest {
 
 // Request message for listing sources using [ListSources][hpi.cloud.news.v1test.NewsService.ListSources].
 message ListSourcesRequest {
+  // The maximum number of sources to return in the response.
+  int32 page_size = 1;
+
+  // A pagination token returned from a previous call to `ListSources`
+  // that indicates where this listing should continue from.
+  string page_token = 2;
 }
 
 // Response message for listing sources using [ListSources][hpi.cloud.news.v1test.NewsService.ListSources].
 message ListSourcesResponse {
+  // A possibly paginated list of sources.
   repeated Source sources = 1;
+
+  // Token to retrieve the next page of results, or empty if there are no
+  // more results.
+  string next_page_token = 2;
 }
 
 // Request message for [GetSource][hpi.cloud.news.v1test.NewsService.GetSource].
@@ -80,11 +94,22 @@ message GetSourceRequest {
 
 // Request message for listing categories using [ListCategories][hpi.cloud.news.v1test.NewsService.ListCategories].
 message ListCategoriesRequest {
+  // The maximum number of categories to return in the response.
+  int32 page_size = 1;
+
+  // A pagination token returned from a previous call to `ListCategories`
+  // that indicates where this listing should continue from.
+  string page_token = 2;
 }
 
 // Response message for listing categories using [ListCategories][hpi.cloud.news.v1test.NewsService.ListCategories].
 message ListCategoriesResponse {
+  // A possibly paginated list of categories.
   repeated Category categories = 1;
+
+  // Token to retrieve the next page of results, or empty if there are no
+  // more results.
+  string next_page_token = 2;
 }
 
 // Request message for [GetCategory][hpi.cloud.news.v1test.NewsService.GetCategory].
@@ -96,11 +121,22 @@ message GetCategoryRequest {
 
 // Request message for listing tags using [ListTags][hpi.cloud.news.v1test.NewsService.ListTags].
 message ListTagsRequest {
+  // The maximum number of tags to return in the response.
+  int32 page_size = 1;
+
+  // A pagination token returned from a previous call to `ListTags`
+  // that indicates where this listing should continue from.
+  string page_token = 2;
 }
 
 // Response message for listing tags using [ListTags][hpi.cloud.news.v1test.NewsService.ListTags].
 message ListTagsResponse {
+  // A possibly paginated list of tags.
   repeated Tag tags = 1;
+
+  // Token to retrieve the next page of results, or empty if there are no
+  // more results.
+  string next_page_token = 2;
 }
 
 // Request message for [GetTag][hpi.cloud.news.v1test.NewsService.GetTag].

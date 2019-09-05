@@ -31,20 +31,28 @@ service CourseService {
   rpc GetCourse (GetCourseRequest) returns (Course);
 
 
-  // Lists course details.
-  rpc ListCourseDetails (ListCourseDetailsRequest) returns (ListCourseDetailsResponse);
-
   // Gets details for a course.
   rpc GetCourseDetail (GetCourseDetailRequest) returns (CourseDetail);
 }
 
 // Request message for listing course series using [ListCourseSeries][hpi.cloud.course.v1test.CourseService.ListCourseSeries].
 message ListCourseSeriesRequest {
+  // The maximum number of course series to return in the response.
+  int32 page_size = 1;
+
+  // A pagination token returned from a previous call to `ListCourseSeries`
+  // that indicates where this listing should continue from.
+  string page_token = 2;
 }
 
 // Response message for listing CourseSeries using [ListCourseSeries][hpi.cloud.course.v1test.CourseService.ListCourseSeries].
 message ListCourseSeriesResponse {
+  // A possibly paginated list of course series.
   repeated CourseSeries course_series = 1;
+
+  // Token to retrieve the next page of results, or empty if there are no
+  // more results.
+  string next_page_token = 2;
 }
 
 // Request message for [GetCourseSeries][hpi.cloud.course.v1test.CourseService.GetCourseSeries].
@@ -56,11 +64,21 @@ message GetCourseSeriesRequest {
 
 // Request message for listing semesters using [ListSemesters][hpi.cloud.course.v1test.CourseService.ListSemesters].
 message ListSemestersRequest {
+  // The maximum number of semesters to return in the response.
+  int32 page_size = 1;
+
+  // A pagination token returned from a previous call to `ListSemesters`
+  // that indicates where this listing should continue from.
+  string page_token = 2;
 }
 
 // Response message for listing semesters using [ListSemesters][hpi.cloud.course.v1test.CourseService.ListSemesters].
 message ListSemestersResponse {
   repeated Semester semesters = 1;
+
+  // Token to retrieve the next page of results, or empty if there are no
+  // more results.
+  string next_page_token = 2;
 }
 
 // Request message for [GetSemester][hpi.cloud.course.v1test.CourseService.GetSemester].
@@ -72,16 +90,27 @@ message GetSemesterRequest {
 
 // Request message for listing courses using [ListCourses][hpi.cloud.course.v1test.CourseService.ListCourses].
 message ListCoursesRequest {
+  // The maximum number of courses to return in the response.
+  int32 page_size = 1;
+
+  // A pagination token returned from a previous call to `ListCourses`
+  // that indicates where this listing should continue from.
+  string page_token = 2;
+
   // If specified, only courses of this series are returned.
-  string course_series_id = 1;
+  string course_series_id = 3;
 
   // If specified, only courses offered in this semester are returned.
-  string semester_id = 2;
+  string semester_id = 4;
 }
 
 // Response message for listing courses using [ListCourses][hpi.cloud.course.v1test.CourseService.ListCourses].
 message ListCoursesResponse {
   repeated Course courses = 1;
+
+  // Token to retrieve the next page of results, or empty if there are no
+  // more results.
+  string next_page_token = 2;
 }
 
 // Request message for [GetCourse][hpi.cloud.course.v1test.CourseService.GetCourse].
@@ -90,15 +119,6 @@ message GetCourseRequest {
   string id = 1;
 }
 
-
-// Request message for listing course details using [ListCourseDetails][hpi.cloud.course.v1test.CourseService.ListCourseDetails].
-message ListCourseDetailsRequest {
-}
-
-// Response message for listing course details using [ListCourseDetails][hpi.cloud.course.v1test.CourseService.ListCourseDetails].
-message ListCourseDetailsResponse {
-  repeated CourseDetail details = 1;
-}
 
 // Request message for [GetCourseDetail][hpi.cloud.course.v1test.CourseService.GetCourseDetail].
 message GetCourseDetailRequest {
