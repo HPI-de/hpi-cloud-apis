@@ -73,8 +73,8 @@ message Course {
   // Required. The ID of the semester that this course takes place in.
   string semester_id = 3;
 
-  // Required. The lecturer.
-  string lecturer = 4;
+  // Required. The lecturers.
+  repeated string lecturers = 4;
 
   // The assistants.
   repeated string assistants = 5;
