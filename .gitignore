@@ -1,6 +1,5 @@
 # Generated files
-src/
-lib/proto/
+gen/
 
 # Gradle
 .gradle
