@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package hpi.cloud.myhpi.v1test;
 
+import "hpi/cloud/common/v1test/image.proto";
+
 option java_multiple_files = true;
 option java_outer_classname = "InfoBitProto";
 option java_package = "de.hpi.cloud.myhpi.v1test";
@@ -11,15 +13,47 @@ message InfoBit {
   // Required, output only. The unique ID of this info bit.
   string id = 1;
 
-  // Required. The title.
-  string title = 2;
+  // ID of the parent info bit.
+  string parent_id = 2;
 
-  // Required. The description.
-  string description = 3;
+  // Required. The title.
+  string title = 3;
+  
+  // The subtitle.
+  string subtitle = 4;
+
+  // The cover image.
+  hpi.cloud.common.v1test.Image cover = 5;
+
+  // Required. The description (HTML).
+  string description = 6;
+
+  // Different ways children are displayed within this info bit.
+  enum ChildDisplay {
+    NONE = 0;
+    LIST = 1;
+    PREVIEWS = 2;
+  }
+
+  // Required. Defines how child info bits are displayed.
+  ChildDisplay child_display = 7;
 
   // IDs of the actions of this info bit.
-  repeated string action_ids = 4;
+  repeated string action_ids = 8;
+
+  // Tags for categorizing this info bit.
+  repeated string tag_ids = 9;
 }
+
+// A tag by which info bits can be organized and filtered.
+message InfoBitTag {
+  // Required, output only. The unique ID of this tag.
+  string id = 1;
+
+  // Required. The title of this tag.
+  string title = 2;
+}
+
 
 // An action of an info bit.
 message Action {
@@ -32,18 +66,18 @@ message Action {
   // The URL pointing to an icon.
   string icon = 3;
 
-  message Link {
-    // Required. The URL.
-    string url = 1;
-  }
-  
-  message Text {
-    // Required. The text to show (HTML).
-    string content = 1;
-  }
-
   oneof type {
-    Link link = 4;
-    Text text = 5;
+    LinkAction link = 4;
+    TextAction text = 5;
   }
+}
+
+message LinkAction {
+  // Required. The URL to open.
+  string url = 1;
+}
+
+message TextAction {
+  // Required. The text to show (HTML).
+  string content = 1;
 }

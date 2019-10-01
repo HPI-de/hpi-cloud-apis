@@ -17,6 +17,13 @@ service MyHpiService {
   rpc GetInfoBit (GetInfoBitRequest) returns (InfoBit);
 
 
+  // Lists tags.
+  rpc ListInfoBitTags (ListInfoBitTagsRequest) returns (ListInfoBitTagsResponse);
+
+  // Gets a tag.
+  rpc GetInfoBitTag (GetInfoBitTagRequest) returns (InfoBitTag);
+
+
   // Lists actions.
   rpc ListActions (ListActionsRequest) returns (ListActionsResponse);
 
@@ -24,29 +31,83 @@ service MyHpiService {
   rpc GetAction (GetActionRequest) returns (Action);
 }
 
+
 // Request message for listing bits of information using [ListInfoBits][hpi.cloud.myhpi.v1test.MyHpiService.ListInfoBits].
 message ListInfoBitsRequest {
+  // The maximum number of info bits to return in the response.
+  int32 page_size = 1;
+
+  // A pagination token returned from a previous call to `ListInfoBits`
+  // that indicates where this listing should continue from.
+  string page_token = 2;
+
+  // The ID of the parent info bit. If specified, only child info bits will be
+  // returned.
+  string parent_id = 3;
 }
 
 // Response message for listing bits of information using [ListInfoBits][hpi.cloud.myhpi.v1test.MyHpiService.ListInfoBits].
 message ListInfoBitsResponse {
+  // A possibly paginated list of info bits.
   repeated InfoBit info_bits = 1;
+
+  // Token to retrieve the next page of results, or empty if there are no
+  // more results.
+  string next_page_token = 2;
 }
 
 // Request message for [GetInfoBit][hpi.cloud.myhpi.v1test.MyHpiService.GetInfoBit].
 message GetInfoBitRequest {
-  // Required. The InfoBit ID.
+  // Required. The info bit ID.
+  string id = 1;
+}
+
+
+// Request message for listing tags using [ListInfoBitTags][hpi.cloud.myhpi.v1test.MyHpiService.ListInfoBitTags].
+message ListInfoBitTagsRequest {
+  // The maximum number of tags to return in the response.
+  int32 page_size = 1;
+
+  // A pagination token returned from a previous call to `ListInfoBitTags`
+  // that indicates where this listing should continue from.
+  string page_token = 2;
+}
+
+// Response message for listing tags using [ListInfoBitTags][hpi.cloud.myhpi.v1test.MyHpiService.ListInfoBitTags].
+message ListInfoBitTagsResponse {
+  // A possibly paginated list of tags.
+  repeated InfoBitTag tags = 1;
+
+  // Token to retrieve the next page of results, or empty if there are no
+  // more results.
+  string next_page_token = 2;
+}
+
+// Request message for [GetInfoBitTag][hpi.cloud.myhpi.v1test.MyHpiService.GetInfoBitTag].
+message GetInfoBitTagRequest {
+  // Required. The tag ID.
   string id = 1;
 }
 
 
 // Request message for listing actions using [ListActions][hpi.cloud.myhpi.v1test.MyHpiService.ListActions].
 message ListActionsRequest {
+  // The maximum number of actions to return in the response.
+  int32 page_size = 1;
+
+  // A pagination token returned from a previous call to `ListActions`
+  // that indicates where this listing should continue from.
+  string page_token = 2;
 }
 
 // Response message for listing actions using [ListActions][hpi.cloud.myhpi.v1test.MyHpiService.ListActions].
 message ListActionsResponse {
-  repeated Action Actions = 1;
+  // A possibly paginated list of actions.
+  repeated Action actions = 1;
+
+  // Token to retrieve the next page of results, or empty if there are no
+  // more results.
+  string next_page_token = 2;
 }
 
 // Request message for [GetAction][hpi.cloud.myhpi.v1test.MyHpiService.GetAction].
