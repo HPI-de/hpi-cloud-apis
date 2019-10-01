@@ -1,7 +1,8 @@
 # hpi-cloud-apis
 
 [![Build Status](https://travis-ci.com/HPI-de/hpi-cloud-apis.svg?branch=dev)](https://travis-ci.com/HPI-de/hpi-cloud-apis)
-[![Download](https://api.bintray.com/packages/hpi/hpi-cloud-mvn/hpi-cloud/images/download.svg)](https://bintray.com/hpi/hpi-cloud-mvn/hpi-cloud/_latestVersion)
+[![GitHub Release](https://img.shields.io/github/v/release/hpi-de/hpi-cloud-apis?include_prereleases&sort=semver&label=Release)](https://github.com/HPI-de/hpi-cloud-apis/releases)
+[![Bintray](https://img.shields.io/bintray/v/hpi/hpi-cloud-mvn/hpi-cloud?label=Bintray)](https://bintray.com/hpi/hpi-cloud-mvn/hpi-cloud/_latestVersion)
 
 This repository contains the original interface definitions of public HPI Cloud APIs that support the gRPC protocol. Reading the original interface definitions can provide a better understanding of HPI Cloud APIs and help you to utilize them more efficiently. You can also use these definitions with open source tools to generate client libraries, documentation, and other artifacts.
 
