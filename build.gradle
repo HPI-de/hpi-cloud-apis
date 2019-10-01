@@ -35,7 +35,7 @@ ext {
     githubReleaseNotes = 'CHANGELOG.md'
     allLicenses = ["Apache-2.0"]
 
-    libraryVersion = "0.0.7"
+    libraryVersion = "0.0.8"
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {
