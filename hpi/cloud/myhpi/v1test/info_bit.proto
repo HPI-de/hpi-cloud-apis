@@ -25,7 +25,7 @@ message InfoBit {
   // The cover image.
   hpi.cloud.common.v1test.Image cover = 5;
 
-  // Required. The description (HTML).
+  // Required. A short description.
   string description = 6;
 
   // HTML-formatted content that can be set in addition to the description.
