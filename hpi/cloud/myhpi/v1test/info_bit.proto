@@ -28,6 +28,9 @@ message InfoBit {
   // Required. The description (HTML).
   string description = 6;
 
+  // HTML-formatted content that can be set in addition to the description.
+  string content = 10;
+
   // Different ways children are displayed within this info bit.
   enum ChildDisplay {
     NONE = 0;
