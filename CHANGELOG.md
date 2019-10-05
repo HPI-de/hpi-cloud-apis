@@ -19,10 +19,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 
+## [0.0.10] - 2019-10-05
+### BREAKING CHANGES
+- **myhpi:** make Action.icon a binary png
+
 ## [0.0.9] - 2019-10-04
 ### BREAKING CHANGES
 - **myhpi:** make InfoBit.description plain text
-- **myhpi:** make Action.icon a binary png
 
 ### Added
 - **myhpi:** add InfoBit.content
@@ -88,7 +91,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 Initial release with NewsService.
 
 
-[Unreleased]: https://github.com/HPI-de/hpi-cloud-apis/compare/0.0.9...dev
+[Unreleased]: https://github.com/HPI-de/hpi-cloud-apis/compare/0.0.10...dev
+[0.0.10]: https://github.com/HPI-de/hpi-cloud-apis/compare/0.0.9...0.0.10
 [0.0.9]: https://github.com/HPI-de/hpi-cloud-apis/compare/0.0.8...0.0.9
 [0.0.8]: https://github.com/HPI-de/hpi-cloud-apis/compare/0.0.7...0.0.8
 [0.0.7]: https://github.com/HPI-de/hpi-cloud-apis/compare/0.0.6...0.0.7
