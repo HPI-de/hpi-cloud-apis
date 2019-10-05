@@ -66,8 +66,8 @@ message Action {
   // Required. The title.
   string title = 2;
 
-  // The URL pointing to an icon.
-  string icon = 3;
+  // A grayscale png-image (approx. 48x48 pixels). May contain transparency.
+  bytes icon = 3;
 
   oneof type {
     LinkAction link = 4;
