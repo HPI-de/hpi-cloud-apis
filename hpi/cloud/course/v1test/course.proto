@@ -2,6 +2,9 @@ syntax = "proto3";
 
 package hpi.cloud.course.v1test;
 
+import "google/protobuf/wrappers.proto";
+import "google/type/date.proto";
+
 option java_multiple_files = true;
 option java_outer_classname = "CourseProto";
 option java_package = "de.hpi.cloud.course.v1test";
@@ -28,8 +31,14 @@ message CourseSeries {
   // Required. The hours per week that courses of this series typically require.
   sint32 hours_per_week = 6;
 
-  // Required. Whether it's mandatory to particiapte in a course of this series.
-  bool mandatory = 7;
+  enum Compulsory {
+    NON_COMPULSORY = 0;
+    COMPULSORY = 1;
+    BRIDGE = 2;
+  }
+
+  // Required. Whether it's mandatory to participate in a course of this series.
+  Compulsory compulsory = 7;
 
   // Required. The language courses of this series are taught in. Must be a valid [BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) language tag.
   string language = 8;
@@ -39,6 +48,7 @@ message CourseSeries {
     SEMINAR = 1;
     BLOCK_SEMINAR = 2;
     EXERCISE = 3;
+    PROJECT = 4;
   }
 
   // Types of this course series. Must contain at least one value.
@@ -81,6 +91,12 @@ message Course {
 
   // A website that contains more information about the course.
   string website = 6;
+
+  // An optional upper bound for the number of participants.
+  google.protobuf.UInt32Value attendance = 7;
+
+  // The enrollment deadline.
+  google.type.Date enrollment_deadline = 8;
 }
 
 // Details of a course.
