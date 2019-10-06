@@ -2,6 +2,9 @@ syntax = "proto3";
 
 package hpi.cloud.course.v1test;
 
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/date.proto";
+
 option java_multiple_files = true;
 option java_outer_classname = "CourseProto";
 option java_package = "de.hpi.cloud.course.v1test";
@@ -28,14 +31,14 @@ message CourseSeries {
   // Required. The hours per week that courses of this series typically require.
   sint32 hours_per_week = 6;
 
-  // Required. Whether it's mandatory to particiapte in a course of this series.
-  Mandatory mandatory = 7;
-
   enum Mandatory {
-    COMPULSORY = 0;
-    NON_COMPULSORY = 1;
+    NON_COMPULSORY = 0;
+    COMPULSORY = 1;
     BRIDGE = 2;
   }
+
+  // Required. Whether it's mandatory to particiapte in a course of this series.
+  Mandatory mandatory = 7;
 
   // Required. The language courses of this series are taught in. Must be a valid [BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) language tag.
   string language = 8;
