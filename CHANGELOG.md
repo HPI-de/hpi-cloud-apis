@@ -18,6 +18,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.0.11] - 2019-10-06
+### BREAKING CHANGES
+- **course:** add Course.attendance, enrollment_deadline; make CourseSeries.mandatory an enum
 
 ## [0.0.10] - 2019-10-05
 ### BREAKING CHANGES
@@ -91,7 +94,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 Initial release with NewsService.
 
 
-[Unreleased]: https://github.com/HPI-de/hpi-cloud-apis/compare/0.0.10...dev
+[Unreleased]: https://github.com/HPI-de/hpi-cloud-apis/compare/0.0.11...dev
+[0.0.11]: https://github.com/HPI-de/hpi-cloud-apis/compare/0.0.10...0.0.11
 [0.0.10]: https://github.com/HPI-de/hpi-cloud-apis/compare/0.0.9...0.0.10
 [0.0.9]: https://github.com/HPI-de/hpi-cloud-apis/compare/0.0.8...0.0.9
 [0.0.8]: https://github.com/HPI-de/hpi-cloud-apis/compare/0.0.7...0.0.8
