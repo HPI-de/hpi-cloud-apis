@@ -3,6 +3,7 @@ syntax = "proto3";
 package hpi.cloud.myhpi.v1test;
 
 import "hpi/cloud/common/v1test/image.proto";
+import "hpi/cloud/common/v1test/markup_content.proto";
 
 option java_multiple_files = true;
 option java_outer_classname = "InfoBitProto";
@@ -28,8 +29,8 @@ message InfoBit {
   // Required. A short description.
   string description = 6;
 
-  // HTML-formatted content that can be set in addition to the description.
-  string content = 10;
+  // Content that can be set in addition to the description.
+  hpi.cloud.common.v1test.MarkupContent content = 10;
 
   // Different ways children are displayed within this info bit.
   enum ChildDisplay {
@@ -81,6 +82,6 @@ message LinkAction {
 }
 
 message TextAction {
-  // Required. The text to show (HTML).
-  string content = 1;
+  // Required. The text to show.
+  hpi.cloud.common.v1test.MarkupContent content = 1;
 }
