@@ -41,11 +41,11 @@ message Article {
   // Required. The actual content of this article.
   hpi.cloud.common.v1test.MarkupContent content = 9;
 
-  // Categories of this article.
-  repeated Category categories = 10;
+  // IDs of categories of this article.
+  repeated string category_ids = 10;
 
-  // Tags of this article.
-  repeated Tag tags = 11;
+  // IDS of tags of this article.
+  repeated string tag_ids = 11;
 
   // The number of times this article was viewed.
   google.protobuf.UInt32Value view_count = 12;
