@@ -4,6 +4,7 @@ package hpi.cloud.course.v1test;
 
 import "google/protobuf/wrappers.proto";
 import "google/type/date.proto";
+import "hpi/cloud/common/v1test/markup_content.proto";
 
 option java_multiple_files = true;
 option java_outer_classname = "CourseProto";
@@ -114,21 +115,21 @@ message CourseDetail {
   // Required. Programs this course can be graded in.
   map<string, ProgramList> programs = 3;
 
-  // A description (HTML).
-  string description = 4;
+  // A description.
+  hpi.cloud.common.v1test.MarkupContent description = 4;
 
-  // Requirements to participate in this course (HTML).
-  string requirements = 5;
+  // Requirements to participate in this course.
+  hpi.cloud.common.v1test.MarkupContent requirements = 5;
 
-  // What you'll learn by participating in this course (HTML).
-  string learning = 6;
+  // What you'll learn by participating in this course.
+  hpi.cloud.common.v1test.MarkupContent learning = 6;
 
-  // Which and how many exams take place (HTML).
-  string examination = 7;
+  // Which and how many exams take place.
+  hpi.cloud.common.v1test.MarkupContent examination = 7;
 
-  // When the course takes place (HTML).
-  string dates = 8;
+  // When the course takes place.
+  hpi.cloud.common.v1test.MarkupContent dates = 8;
 
-  // Additional literature for this course (HTML).
-  string literature = 9;
+  // Additional literature for this course.
+  hpi.cloud.common.v1test.MarkupContent literature = 9;
 }
