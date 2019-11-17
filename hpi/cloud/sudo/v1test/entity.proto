@@ -2,9 +2,8 @@ syntax = "proto3";
 
 package hpi.cloud.sudo.v1test;
 
-import "google/protobuf/timestamp.proto";
 import "google/protobuf/wrappers.proto";
-import "hpi/cloud/common/v1test/image.proto";
+import "hpi/cloud/sudo/v1test/events.proto";
 
 option java_multiple_files = true;
 option java_outer_classname = "EntityProto";
@@ -54,7 +53,7 @@ message L10nString {
 // Describes additional permissions on a single entity or on a party for a whole
 // collection.
 message Permission {
-  // A party can read an entity's value.
+  // A party can read an entity's value and metadata.
   // Can be used per entity or on a party for a whole collection.
   google.protobuf.BoolValue read = 1;
 
