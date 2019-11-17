@@ -2,8 +2,8 @@ syntax = "proto3";
 
 package hpi.cloud.sudo.v1test;
 
+import "hpi/cloud/sudo/v1test/common.proto";
 import "hpi/cloud/sudo/v1test/events.proto";
-import "hpi/cloud/sudo/v1test/permissions.proto";
 
 option java_multiple_files = true;
 option java_outer_classname = "EntityProto";
@@ -42,10 +42,4 @@ message Metadata {
   // A list of events that record the history of an entity. These will be
   // created automatically by the server and can't be overriden.
   repeated Event events = 3;
-}
-
-// A string with values for differrent locales.
-message L10nString {
-  // Required. A map of locales to the corresponding (localized) string value.
-  map<string, string> strings = 1;
 }

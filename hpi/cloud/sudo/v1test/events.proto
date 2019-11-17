@@ -3,7 +3,7 @@ syntax = "proto3";
 package hpi.cloud.sudo.v1test;
 
 import "google/protobuf/timestamp.proto";
-import "hpi/cloud/sudo/v1test/permissions.proto";
+import "hpi/cloud/sudo/v1test/common.proto";
 
 option java_multiple_files = true;
 option java_outer_classname = "EventProto";
@@ -63,8 +63,8 @@ message DelayedEvent {
   google.protobuf.Timestamp effective_from = 1;
 
   oneof type {
-    DeletedChangeEvent deletedChange = 1;
-    PublishedChangeEvent publishedChange = 2;
+    DeletedChangeEvent deletedChange = 2;
+    PublishedChangeEvent publishedChange = 3;
   }
 }
 
