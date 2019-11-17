@@ -2,8 +2,8 @@ syntax = "proto3";
 
 package hpi.cloud.sudo.v1test;
 
-import "google/protobuf/wrappers.proto";
 import "hpi/cloud/sudo/v1test/events.proto";
+import "hpi/cloud/sudo/v1test/permissions.proto";
 
 option java_multiple_files = true;
 option java_outer_classname = "EntityProto";
@@ -48,20 +48,4 @@ message Metadata {
 message L10nString {
   // Required. A map of locales to the corresponding (localized) string value.
   map<string, string> strings = 1;
-}
-
-// Describes additional permissions on a single entity or on a party for a whole
-// collection.
-message Permission {
-  // A party can read an entity's value and metadata.
-  // Can be used per entity or on a party for a whole collection.
-  google.protobuf.BoolValue read = 1;
-
-  // A party can write a single entity's value and metadata.
-  // Can be used per entity or on a party for a whole collection.
-  google.protobuf.BoolValue write = 2;
-
-  // A party can create new entities in a collection.
-  // Can only be used on a party for a whole collection.
-  google.protobuf.BoolValue create = 3;
 }
