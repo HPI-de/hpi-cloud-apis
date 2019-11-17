@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package hpi.cloud.sudo.v1test;
 
+import "google/protobuf/timestamp.proto";
+import "hpi/cloud/sudo/v1test/common.proto";
 import "hpi/cloud/sudo/v1test/entity.proto";
 
 option java_multiple_files = true;
