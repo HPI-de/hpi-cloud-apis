@@ -1,0 +1,68 @@
+syntax = "proto3";
+
+package hpi.cloud.sudo.v1test;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "hpi/cloud/common/v1test/image.proto";
+
+option java_multiple_files = true;
+option java_outer_classname = "EntityProto";
+option java_package = "de.hpi.cloud.sudo.v1test";
+
+// A generic database entity.
+message Entity {
+  // Required, output only. The service (e.g. "news") in which this entity is
+  // contained.
+  string service = 1;
+
+  // Required, output only. The unique ID (inside the service) of this entity.
+  string id = 2;
+
+  // Required, output only. The type of this entity, e.g. "article".
+  string type = 3;
+
+  // Required, output only. The DB version of this entity, e.g. 1.
+  uint32 version = 4;
+
+  Metadata metadata = 5;
+
+  // Required. JSON-representation of the actual entity's value.
+  string value = 6;
+}
+
+message Metadata {
+  // A list of (localized) sources of this entity, e.g. the original URL for an
+  // article.
+  repeated L10nString sources = 1;
+
+  // A list of (additional) permissions. The author implicitly has write access
+  // and collection permissions (applicable e.g. for all articles) apply.
+  map<string, Permission> permissions = 2;
+
+  // A list of events that record the history of an entity. These will be
+  // created automatically by the server and can't be overriden.
+  repeated Event events = 3;
+}
+
+// A string with values for differrent locales.
+message L10nString {
+  // Required. A map of locales to the corresponding (localized) string value.
+  map<string, string> strings = 1;
+}
+
+// Describes additional permissions on a single entity or on a party for a whole
+// collection.
+message Permission {
+  // A party can read an entity's value.
+  // Can be used per entity or on a party for a whole collection.
+  google.protobuf.BoolValue read = 1;
+
+  // A party can write a single entity's value and metadata.
+  // Can be used per entity or on a party for a whole collection.
+  google.protobuf.BoolValue write = 2;
+
+  // A party can create new entities in a collection.
+  // Can only be used on a party for a whole collection.
+  google.protobuf.BoolValue create = 3;
+}

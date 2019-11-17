@@ -1,0 +1,87 @@
+syntax = "proto3";
+
+package hpi.cloud.sudo.v1test;
+
+import "google/protobuf/timestamp.proto";
+import "hpi/cloud/sudo/v1test/entity.proto";
+
+option java_multiple_files = true;
+option java_outer_classname = "EventProto";
+option java_package = "de.hpi.cloud.sudo.v1test";
+
+// Describes an event in the lifetime of an entity.
+message Event {
+  // Required. The party ID of this event's author.
+  string author_id = 1;
+
+  // Required. A timestamp of when this event was created.
+  google.protobuf.Timestamp timestamp = 2;
+
+  oneof type {
+    CreateEvent create = 3;
+    UpdateEvent update = 4;
+    KeepAliveEvent keepAlive = 5;
+    SourcesChangeEvent sourcesChange = 6;
+    PermissionsChangeEvent permissionsChange = 7;
+    DelayedEvent delayed = 8;
+  }
+}
+
+// An event indicating the entity's creation.
+message CreateEvent {}
+
+// An event changing the actual value of an entity. The previous value is
+// persisted here.
+message UpdateEvent {
+  // Required. The old value.
+  string old_value = 1;
+}
+
+// An event indicating that this entity is up to date. Can be used e.g. by a
+// crawler.
+message KeepAliveEvent {}
+
+// An event changing the sources of an entity. The previous sources are
+// persisted here.
+message SourcesChangeEvent {
+  // Required. The old sources.
+  repeated L10nString old_sources = 1;
+}
+
+// An event changing the permissions of an entity. The previous permissions are
+// persisted here.
+message PermissionsChangeEvent {
+  // Required. The old permissions.
+  map<string, Permission> old_permissions = 1;
+}
+
+// An event which might have an effect only in the future, e.g. to publish an
+// entity starting the next day.
+message DelayedEvent {
+  // When set, the effect will be postponed to the specified time. Otherwise, it
+  // will be effective immediately.
+  google.protobuf.Timestamp effective_from = 1;
+
+  oneof type {
+    DeletedChangeEvent deletedChange = 1;
+    PublishedChangeEvent publishedChange = 2;
+  }
+}
+
+// An event describing whether the associated entity is deleted or not (starting
+// at effective_from).
+message DeletedChangeEvent {
+  // Required. When this is set, the associated entity will not appear in a
+  // default list query. Only the author and parties with explicit write
+  // permission on this entity can see and restore it.
+  bool isDeleted = 1;
+}
+
+// An event describing whether the associated entity is published or not
+// (starting at effective_from).
+message PublishedChangeEvent {
+  // Required. When this is set, only the author and parties with explicit write
+  // permission on this entity can see it. Clients usually flag this entity as a
+  // draft.
+  bool isPublished = 1;
+}

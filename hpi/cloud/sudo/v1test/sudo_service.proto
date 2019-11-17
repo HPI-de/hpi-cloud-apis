@@ -1,0 +1,184 @@
+syntax = "proto3";
+
+package hpi.cloud.sudo.v1test;
+
+import "hpi/cloud/sudo/v1test/entity.proto";
+
+option java_multiple_files = true;
+option java_outer_classname = "SudoServiceProto";
+option java_package = "de.hpi.cloud.sudo.v1test";
+
+// Provides generic access to the database. This still takes into account all
+// read, write and create permissions.
+service SudoService {
+  // Lists entities.
+  rpc ListEntities (ListEntitiesRequest) returns (ListEntitiesResponse);
+
+  // Gets an entity.
+  rpc GetEntity (GetEntityRequest) returns (Entity);
+
+  // Creates a new entity.
+  rpc CreateEntity (CreateEntityRequest) returns (Entity);
+
+
+  // Updates the value of an entity.
+  rpc UpdateValue (UpdateValueRequest) returns (Entity);
+
+  // Adds a keep-alive event to this entity.
+  rpc UpdateKeepAlive (UpdateKeepAliveRequest) returns (Entity);
+
+  // Updates the sources of an entity.
+  rpc UpdateSources (UpdateSourcesRequest) returns (Entity);
+
+  // Updates the permissions of parties on this entity.
+  rpc UpdatePermissions (UpdatePermissionsRequest) returns (Entity);
+
+  // Updates the deleted status of an entity.
+  rpc UpdateDeleted (UpdateDeletedRequest) returns (Entity);
+
+  // Updates the published status of an entity.
+  rpc UpdatePublished (UpdatePublishedRequest) returns (Entity);
+}
+
+
+// Request message for listing entities using [ListEntities][hpi.cloud.sudo.v1test.SudoService.ListEntities].
+message ListEntitiesRequest {
+  // The maximum number of entities to return in the response.
+  int32 page_size = 1;
+
+  // A pagination token returned from a previous call to `ListEntities`
+  // that indicates where this listing should continue from.
+  string page_token = 2;
+
+  // Required. The service (e.g. "news") whose entities should be returned.
+  string service = 3;
+
+  // If set, only entities of this type will be returned.
+  string type = 4;
+
+  // If set, only entities stored as this version will be returned.
+  uint32 version = 5;
+}
+
+// Response message for listing entities using [ListEntities][hpi.cloud.sudo.v1test.SudoService.ListEntities].
+message ListEntitiesResponse {
+  // A possibly paginated list of entities.
+  repeated Entity Entities = 1;
+
+  // Token to retrieve the next page of results, or empty if there are no
+  // more results.
+  string next_page_token = 2;
+}
+
+
+// Request message for [GetEntity][hpi.cloud.sudo.v1test.SudoService.GetEntity].
+message GetEntityRequest {
+  // Required. The service (e.g. "news") this entity belongs to.
+  string service = 1;
+
+  // Required. The entity ID.
+  string id = 2;
+}
+
+
+// Request message for [CreateEntity][hpi.cloud.sudo.v1test.SudoService.CreateEntity].
+message CreateEntityRequest {
+  // Required. The service this entity will belong to.
+  string service = 1;
+
+  // Required. The type of this entity.
+  string type = 3;
+
+  // Required. The DB version of this entity.
+  uint32 version = 4;
+
+  // The sources of this entity.
+  repeated L10nString sources = 5;
+
+  // The permissions for accessing this entity.
+  map<string, Permission> permissions = 6;
+
+  // Required. JSON-representation of the actual value.
+  string value = 7;
+}
+
+
+// Request message for updating an entity's value using [UpdateValue][hpi.cloud.sudo.v1test.SudoService.UpdateValue].
+message UpdateValueRequest {
+  // Required. The service this entity belongs to.
+  string service = 1;
+
+  // Required. The entity ID.
+  string id = 2;
+
+  // Required. The new value.
+  string new_value = 3;
+}
+
+
+// Request message for adding a keep-alive event to the entity using [UpdateKeepAlive][hpi.cloud.sudo.v1test.SudoService.UpdateKeepAlive].
+message UpdateKeepAliveRequest {
+  // Required. The service this entity belongs to.
+  string service = 1;
+
+  // Required. The entity ID.
+  string id = 2;
+}
+
+
+// Request message for updating an entity's sources using [UpdateSources][hpi.cloud.sudo.v1test.SudoService.UpdateSources].
+message UpdateSourcesRequest {
+  // Required. The service this entity belongs to.
+  string service = 1;
+
+  // Required. The entity ID.
+  string id = 2;
+
+  // Required. The new sources.
+  repeated L10nString new_sources = 3;
+}
+
+
+// Request message for updating an entity's permissions using [UpdatePermissions][hpi.cloud.sudo.v1test.SudoService.UpdatePermissions].
+message UpdatePermissionsRequest {
+  // Required. The service this entity belongs to.
+  string service = 1;
+
+  // Required. The entity ID.
+  string id = 2;
+
+  // Required. The new permissions.
+  map<string, Permission> new_permissions = 3;
+}
+
+
+// Request message for updating an entity's deleted status using [UpdateDeleted][hpi.cloud.sudo.v1test.SudoService.UpdateDeleted].
+message UpdateDeletedRequest {
+  // Required. The service this entity belongs to.
+  string service = 1;
+
+  // Required. The entity ID.
+  string id = 2;
+
+  // Required. The new deleted status.
+  bool is_deleted = 3;
+
+  // If set, the new status will only be effective after this time.
+  google.protobuf.Timestamp effective_from = 4;
+}
+
+
+// Request message for updating an entity's published status using [UpdatePublished][hpi.cloud.sudo.v1test.SudoService.UpdatePublished].
+message UpdatePublishedRequest {
+  // Required. The service this entity belongs to.
+  string service = 1;
+
+  // Required. The entity ID.
+  string id = 2;
+
+  // Required. The new published status.
+  bool is_published = 3;
+
+  // If set, the new status will only be effective after this time.
+  google.protobuf.Timestamp effective_from = 4;
+}
