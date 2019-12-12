@@ -65,7 +65,7 @@ message ListEntitiesRequest {
 // Response message for listing entities using [ListEntities][hpi.cloud.sudo.v1test.SudoService.ListEntities].
 message ListEntitiesResponse {
   // A possibly paginated list of entities.
-  repeated Entity Entities = 1;
+  repeated Entity entities = 1;
 
   // Token to retrieve the next page of results, or empty if there are no
   // more results.
