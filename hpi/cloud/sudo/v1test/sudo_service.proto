@@ -13,6 +13,13 @@ option java_package = "de.hpi.cloud.sudo.v1test";
 // Provides generic access to the database. This still takes into account all
 // read, write and create permissions.
 service SudoService {
+  // Lists entity types.
+  rpc ListEntityTypes (ListEntityTypesRequest) returns (ListEntityTypesResponse);
+
+  // Lists entity versions.
+  rpc ListEntityVersions (ListEntityVersionsRequest) returns (ListEntityVersionsResponse);
+
+
   // Lists entities.
   rpc ListEntities (ListEntitiesRequest) returns (ListEntitiesResponse);
 
@@ -40,6 +47,59 @@ service SudoService {
 
   // Updates the published status of an entity.
   rpc UpdatePublished (UpdatePublishedRequest) returns (Entity);
+}
+
+
+// Request message for listing entity types using [ListEntityTypes][hpi.cloud.sudo.v1test.SudoService.ListEntityTypes].
+message ListEntityTypesRequest {
+  // The maximum number of entity types to return in the response.
+  int32 page_size = 1;
+
+  // A pagination token returned from a previous call to `ListEntityTypes`
+  // that indicates where this listing should continue from.
+  string page_token = 2;
+
+  // Required. The service (e.g. "news") whose entity types should be returned.
+  string service = 3;
+}
+
+// Response message for listing entities using [ListEntityTypes][hpi.cloud.sudo.v1test.SudoService.ListEntityTypes].
+message ListEntityTypesResponse {
+  // A possibly paginated list of entity types.
+  repeated string entity_types = 1;
+
+  // Token to retrieve the next page of results, or empty if there are no
+  // more results.
+  string next_page_token = 2;
+}
+
+
+// Request message for listing entity versions using [ListEntityVersions][hpi.cloud.sudo.v1test.SudoService.ListEntityVersions].
+message ListEntityVersionsRequest {
+  // The maximum number of entity versions to return in the response.
+  int32 page_size = 1;
+
+  // A pagination token returned from a previous call to `ListEntityVersions`
+  // that indicates where this listing should continue from.
+  string page_token = 2;
+
+  // Required. The service (e.g. "news") whose entity versions should be
+  // returned.
+  string service = 3;
+
+  // Required. Only entity versions of this type (e.g. "article") will be
+  // returned.
+  string type = 4;
+}
+
+// Response message for listing entity versions using [ListEntityVersions][hpi.cloud.sudo.v1test.SudoService.ListEntityVersions].
+message ListEntityVersionsResponse {
+  // A possibly paginated list of entity versions.
+  repeated uint32 entity_versions = 1;
+
+  // Token to retrieve the next page of results, or empty if there are no
+  // more results.
+  string next_page_token = 2;
 }
 
 
