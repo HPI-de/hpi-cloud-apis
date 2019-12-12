@@ -55,7 +55,7 @@ message ListEntitiesRequest {
   // Required. The service (e.g. "news") whose entities should be returned.
   string service = 3;
 
-  // If set, only entities of this type will be returned.
+  // Required. Only entities of this type (e.g. "article") will be returned.
   string type = 4;
 
   // If set, only entities stored as this version will be returned.
