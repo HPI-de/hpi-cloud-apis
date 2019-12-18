@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package hpi.cloud.common.v1test;
+
+option java_multiple_files = true;
+option java_outer_classname = "MarkupContentProto";
+option java_package = "de.hpi.cloud.common.v1test";
+
+
+// Text in a markup format.
+message MarkupContent {
+  // Required. A MIME-type describing the content. Clients should support
+  // text/html and text/markdown.
+  string type = 1;
+
+  // Required. The actual content.
+  string content = 2;
+}

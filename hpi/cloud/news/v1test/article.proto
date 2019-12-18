@@ -5,6 +5,7 @@ package hpi.cloud.news.v1test;
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/wrappers.proto";
 import "hpi/cloud/common/v1test/image.proto";
+import "hpi/cloud/common/v1test/markup_content.proto";
 
 option java_multiple_files = true;
 option java_outer_classname = "ArticleProto";
@@ -37,14 +38,14 @@ message Article {
   // Required. A short text summarizing this article. Recommended for a preview.
   string teaser = 8;
 
-  // Required. The actual HTML-content of this article.
-  string content = 9;
+  // Required. The actual content of this article.
+  hpi.cloud.common.v1test.MarkupContent content = 9;
 
-  // Categories of this article.
-  repeated Category categories = 10;
+  // IDs of categories of this article.
+  repeated string category_ids = 10;
 
-  // Tags of this article.
-  repeated Tag tags = 11;
+  // IDS of tags of this article.
+  repeated string tag_ids = 11;
 
   // The number of times this article was viewed.
   google.protobuf.UInt32Value view_count = 12;
