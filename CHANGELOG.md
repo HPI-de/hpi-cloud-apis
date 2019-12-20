@@ -18,6 +18,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.0.13] - 2019-12-20
+### Added
+- **club:** add service for retrieving HPI student clubs
+
 ## [0.0.12] - 2019-12-18
 ### BREAKING CHANGES
 - **common, course, myhpi, news:** support different content types
@@ -99,7 +103,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 Initial release with NewsService.
 
 
-[Unreleased]: https://github.com/HPI-de/hpi-cloud-apis/compare/0.0.12...dev
+[Unreleased]: https://github.com/HPI-de/hpi-cloud-apis/compare/0.0.13...dev
+[0.0.13]: https://github.com/HPI-de/hpi-cloud-apis/compare/0.0.12...0.0.13
 [0.0.12]: https://github.com/HPI-de/hpi-cloud-apis/compare/0.0.11...0.0.12
 [0.0.11]: https://github.com/HPI-de/hpi-cloud-apis/compare/0.0.10...0.0.11
 [0.0.10]: https://github.com/HPI-de/hpi-cloud-apis/compare/0.0.9...0.0.10
