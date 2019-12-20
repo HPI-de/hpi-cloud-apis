@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package hpi.cloud.club.v1test;
+
+import "hpi/cloud/club/v1test/club.proto";
+
+option java_multiple_files = true;
+option java_outer_classname = "ClubServiceProto";
+option java_package = "de.hpi.cloud.club.v1test";
+
+// Provides access to all HPI student clubs.
+service ClubService {
+  // Lists all clubs.
+  rpc ListClubs (ListClubsRequest) returns (ListClubsResponse);
+
+  // Gets a club.
+  rpc GetClub (GetClubRequest) returns (Club);
+}
+
+// Request message for listing clubs using [ListClubs][hpi.cloud.club.v1test.ClubService.ListClubs].
+message ListClubsRequest {
+  // The maximum number of clubs to return in the response.
+  int32 page_size = 1;
+
+  // A pagination token returned from a previous call to `ListClubs`
+  // that indicates where this listing should continue from.
+  string page_token = 2;
+}
+
+// Response message for listing clubs using [ListClubs][hpi.cloud.club.v1test.ClubService.ListClubs].
+message ListClubsResponse {
+  // A possibly paginated list of clubs.
+  repeated Club clubs = 1;
+
+  // Token to retrieve the next page of results, or empty if there are no
+  // more results.
+  string next_page_token = 2;
+}
+
+// Request message for [GetClub][hpi.cloud.club.v1test.ClubService.GetClub].
+message GetClubRequest {
+  // Required. The club ID.
+  string id = 1;
+}

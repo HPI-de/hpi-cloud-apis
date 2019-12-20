@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package hpi.cloud.club.v1test;
+
+option java_multiple_files = true;
+option java_outer_classname = "ClubProto";
+option java_package = "de.hpi.cloud.club.v1test";
+
+
+// An HPI's student club, e.g. MobileDev.
+message Club {
+  // Required, output only. The unique ID of this club.
+  string id = 1;
+
+  // Required. The title of this club (e.g. "MobileDev").
+  string title = 2;
+
+  // Required. An abbreviation of the title (e.g. "MD").
+  string abbreviation = 3;
+
+  // Required. ID of the group of people representing this club's head/speakers.
+  string head_group_id = 4;
+
+  // Required. ID of the group of people representing this club's members.
+  string member_group_id = 5;
+}
