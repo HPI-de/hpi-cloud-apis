@@ -135,8 +135,11 @@ message GetEntityRequest {
   // Required. The service (e.g. "news") this entity belongs to.
   string service = 1;
 
+  // Required. The type (e.g. "article") of this entity.
+  string type = 2;
+
   // Required. The entity ID.
-  string id = 2;
+  string id = 3;
 }
 
 
@@ -146,19 +149,19 @@ message CreateEntityRequest {
   string service = 1;
 
   // Required. The type of this entity.
-  string type = 3;
+  string type = 2;
 
   // Required. The DB version of this entity.
-  uint32 version = 4;
+  uint32 version = 3;
 
   // The sources of this entity.
-  repeated L10nString sources = 5;
+  repeated L10nString sources = 4;
 
   // The permissions for accessing this entity.
-  map<string, Permission> permissions = 6;
+  map<string, Permission> permissions = 5;
 
   // Required. JSON-representation of the actual value.
-  string value = 7;
+  string value = 6;
 }
 
 
@@ -167,7 +170,8 @@ message UpdateValueRequest {
   // Required. The service this entity belongs to.
   string service = 1;
 
-
+  // Required. The type (e.g. "article") of this entity.
+  string type = 2;
 
   // Required. The entity ID.
   string id = 3;
@@ -182,11 +186,14 @@ message UpdateSourcesRequest {
   // Required. The service this entity belongs to.
   string service = 1;
 
+  // Required. The type (e.g. "article") of this entity.
+  string type = 2;
+
   // Required. The entity ID.
-  string id = 2;
+  string id = 3;
 
   // Required. The new sources.
-  repeated L10nString new_sources = 3;
+  repeated L10nString new_sources = 4;
 }
 
 
@@ -195,11 +202,14 @@ message UpdatePermissionsRequest {
   // Required. The service this entity belongs to.
   string service = 1;
 
+  // Required. The type (e.g. "article") of this entity.
+  string type = 2;
+
   // Required. The entity ID.
-  string id = 2;
+  string id = 3;
 
   // Required. The new permissions.
-  map<string, Permission> new_permissions = 3;
+  map<string, Permission> new_permissions = 4;
 }
 
 
@@ -208,14 +218,17 @@ message UpdateDeletedRequest {
   // Required. The service this entity belongs to.
   string service = 1;
 
+  // Required. The type (e.g. "article") of this entity.
+  string type = 2;
+
   // Required. The entity ID.
-  string id = 2;
+  string id = 3;
 
   // Required. The new deleted status.
-  bool is_deleted = 3;
+  bool is_deleted = 4;
 
   // If set, the new status will only be effective after this time.
-  google.protobuf.Timestamp effective_from = 4;
+  google.protobuf.Timestamp effective_from = 5;
 }
 
 
@@ -224,12 +237,15 @@ message UpdatePublishedRequest {
   // Required. The service this entity belongs to.
   string service = 1;
 
+  // Required. The type (e.g. "article") of this entity.
+  string type = 2;
+
   // Required. The entity ID.
-  string id = 2;
+  string id = 3;
 
   // Required. The new published status.
-  bool is_published = 3;
+  bool is_published = 4;
 
   // If set, the new status will only be effective after this time.
-  google.protobuf.Timestamp effective_from = 4;
+  google.protobuf.Timestamp effective_from = 5;
 }
