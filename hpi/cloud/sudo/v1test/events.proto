@@ -20,10 +20,9 @@ message Event {
   oneof type {
     CreateEvent create = 3;
     UpdateEvent update = 4;
-    KeepAliveEvent keepAlive = 5;
-    SourcesChangeEvent sourcesChange = 6;
-    PermissionsChangeEvent permissionsChange = 7;
-    DelayedEvent delayed = 8;
+    SourcesChangeEvent sourcesChange = 5;
+    PermissionsChangeEvent permissionsChange = 6;
+    DelayedEvent delayed = 7;
   }
 }
 
@@ -33,13 +32,9 @@ message CreateEvent {}
 // An event changing the actual value of an entity. The previous value is
 // persisted here.
 message UpdateEvent {
-  // Required. The old value.
+  // Optional. The old value or empty if nothing changed.
   string old_value = 1;
 }
-
-// An event indicating that this entity is up to date. Can be used e.g. by a
-// crawler.
-message KeepAliveEvent {}
 
 // An event changing the sources of an entity. The previous sources are
 // persisted here.

@@ -33,9 +33,6 @@ service SudoService {
   // Updates the value of an entity.
   rpc UpdateValue (UpdateValueRequest) returns (Entity);
 
-  // Adds a keep-alive event to this entity.
-  rpc UpdateKeepAlive (UpdateKeepAliveRequest) returns (Entity);
-
   // Updates the sources of an entity.
   rpc UpdateSources (UpdateSourcesRequest) returns (Entity);
 
@@ -170,21 +167,13 @@ message UpdateValueRequest {
   // Required. The service this entity belongs to.
   string service = 1;
 
-  // Required. The entity ID.
-  string id = 2;
 
-  // Required. The new value.
-  string new_value = 3;
-}
-
-
-// Request message for adding a keep-alive event to the entity using [UpdateKeepAlive][hpi.cloud.sudo.v1test.SudoService.UpdateKeepAlive].
-message UpdateKeepAliveRequest {
-  // Required. The service this entity belongs to.
-  string service = 1;
 
   // Required. The entity ID.
-  string id = 2;
+  string id = 3;
+
+  // The new value or empty if nothing changed.
+  string new_value = 4;
 }
 
 
