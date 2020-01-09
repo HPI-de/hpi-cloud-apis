@@ -3,7 +3,8 @@ syntax = "proto3";
 package hpi.cloud.sudo.v1test;
 
 import "google/protobuf/timestamp.proto";
-import "hpi/cloud/sudo/v1test/common.proto";
+import "hpi/cloud/common/v1test/l10n_string.proto";
+import "hpi/cloud/common/v1test/permission.proto";
 import "hpi/cloud/sudo/v1test/entity.proto";
 
 option java_multiple_files = true;
@@ -155,10 +156,10 @@ message CreateEntityRequest {
   uint32 version = 3;
 
   // The sources of this entity.
-  repeated L10nString sources = 4;
+  repeated hpi.cloud.common.v1test.L10nString sources = 4;
 
   // The permissions for accessing this entity.
-  map<string, Permission> permissions = 5;
+  map<string, hpi.cloud.common.v1test.Permission> permissions = 5;
 
   // Required. JSON-representation of the actual value.
   string value = 6;
@@ -193,7 +194,7 @@ message UpdateSourcesRequest {
   string id = 3;
 
   // Required. The new sources.
-  repeated L10nString new_sources = 4;
+  repeated hpi.cloud.common.v1test.L10nString new_sources = 4;
 }
 
 
@@ -209,7 +210,7 @@ message UpdatePermissionsRequest {
   string id = 3;
 
   // Required. The new permissions.
-  map<string, Permission> new_permissions = 4;
+  map<string, hpi.cloud.common.v1test.Permission> new_permissions = 4;
 }
 
 
