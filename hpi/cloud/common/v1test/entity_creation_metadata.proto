@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package hpi.cloud.common.v1test;
+
+option java_multiple_files = true;
+option java_outer_classname = "EntityCreationMetadata";
+option java_package = "de.hpi.cloud.common.v1test";
+
+message EntityCreationMetadata {
+  // A list of (localized) sources of this entity, e.g. the original URL for an
+  // article.
+  repeated L10nString sources = 1;
+
+  // A list of (additional) permissions. The author implicitly has write access
+  // and collection permissions (applicable e.g. for all articles) apply.
+  map<string, Permission> permissions = 2;
+
+  // Setting this field generates an initial PublishedChangeEvent meaning
+  // everyone with (implicit) access can see (and potentially edit) it. See
+  // [PublishedChangeEvent](hpi.cloud.sudo.v1test.PublishedChangeEvent) for more
+  // information
+  boolean is_published = 3;
+}
