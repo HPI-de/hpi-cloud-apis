@@ -2,6 +2,9 @@ syntax = "proto3";
 
 package hpi.cloud.common.v1test;
 
+import "hpi/cloud/common/v1test/l10n_string.proto";
+import "hpi/cloud/common/v1test/permission.proto";
+
 option java_multiple_files = true;
 option java_outer_classname = "EntityCreationMetadata";
 option java_package = "de.hpi.cloud.common.v1test";
@@ -19,5 +22,5 @@ message EntityCreationMetadata {
   // everyone with (implicit) access can see (and potentially edit) it. See
   // [PublishedChangeEvent](hpi.cloud.sudo.v1test.PublishedChangeEvent) for more
   // information
-  boolean is_published = 3;
+  bool is_published = 3;
 }

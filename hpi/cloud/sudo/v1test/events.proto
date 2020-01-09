@@ -3,7 +3,8 @@ syntax = "proto3";
 package hpi.cloud.sudo.v1test;
 
 import "google/protobuf/timestamp.proto";
-import "hpi/cloud/sudo/v1test/common.proto";
+import "hpi/cloud/common/v1test/l10n_string.proto";
+import "hpi/cloud/common/v1test/permission.proto";
 
 option java_multiple_files = true;
 option java_outer_classname = "EventProto";
@@ -32,7 +33,7 @@ message CreateEvent {}
 // An event changing the actual value of an entity. The previous value is
 // persisted here.
 message UpdateEvent {
-  // Optional. The old value or empty if nothing changed.
+  // The old value or empty if nothing changed.
   string old_value = 1;
 }
 
@@ -40,14 +41,14 @@ message UpdateEvent {
 // persisted here.
 message SourcesChangeEvent {
   // Required. The old sources.
-  repeated L10nString old_sources = 1;
+  repeated hpi.cloud.common.v1test.L10nString old_sources = 1;
 }
 
 // An event changing the permissions of an entity. The previous permissions are
 // persisted here.
 message PermissionsChangeEvent {
   // Required. The old permissions.
-  map<string, Permission> old_permissions = 1;
+  map<string, hpi.cloud.common.v1test.Permission> old_permissions = 1;
 }
 
 // An event which might have an effect only in the future, e.g. to publish an
