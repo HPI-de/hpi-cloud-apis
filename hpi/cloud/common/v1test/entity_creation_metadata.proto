@@ -6,7 +6,7 @@ import "hpi/cloud/common/v1test/l10n_string.proto";
 import "hpi/cloud/common/v1test/permission.proto";
 
 option java_multiple_files = true;
-option java_outer_classname = "EntityCreationMetadata";
+option java_outer_classname = "EntityCreationMetadataProto";
 option java_package = "de.hpi.cloud.common.v1test";
 
 message EntityCreationMetadata {
