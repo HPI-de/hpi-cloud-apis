@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package hpi.cloud.myhpi.v1test;
 
+import "google/protobuf/empty.proto";
 import "google/protobuf/field_mask.proto";
 import "hpi/cloud/common/v1test/entity_creation_metadata.proto";
 import "hpi/cloud/myhpi/v1test/info_bit.proto";
@@ -23,6 +24,9 @@ service MyHpiService {
 
   // Updates an InfoBit.
   rpc UpdateInfoBit (UpdateInfoBitRequest) returns (InfoBit);
+
+  // Deletes an InfoBit.
+  rpc DeleteInfoBit (DeleteInfoBitRequest) returns (google.protobuf.Empty);
 
 
   // Lists tags.
@@ -89,6 +93,12 @@ message UpdateInfoBitRequest {
   // Required. The update mask applied to the resource. This must not include
   // the id-field.
   google.protobuf.FieldMask update_mask = 2;
+}
+
+// Request message for [DeleteInfoBit][hpi.cloud.myhpi.v1test.MyHpiService.DeleteInfoBit].
+message DeleteInfoBitRequest {
+  // Required. ID of the InfoBit to delete.
+  string id = 1;
 }
 
 
