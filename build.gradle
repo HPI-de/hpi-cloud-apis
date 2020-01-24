@@ -11,10 +11,10 @@ repositories {
 dependencies {
     api("com.google.protobuf:protobuf-java:3.8.0")
     // implementation as Android clients will replace this with grpc-protobuf-lite
-    implementation("io.grpc:grpc-protobuf:1.21.0")
-    api("io.grpc:grpc-stub:1.21.0")
+    implementation("io.grpc:grpc-protobuf:1.26.0")
+    api("io.grpc:grpc-stub:1.26.0")
     // implementation as Android clients will replace this with grpc-okhttp
-    implementation("io.grpc:grpc-netty:1.21.0")
+    implementation("io.grpc:grpc-netty:1.26.0")
 }
 
 // Publishing config
