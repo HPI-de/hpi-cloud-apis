@@ -29,13 +29,16 @@ message MenuItem {
   // Required. The date of when this menu was/will be served.
   google.type.Date date = 3;
 
-  // The counter where this item is served.
-  string counter = 4;
+  // ID of the counter (location) where this item is served.
+  string counter_id = 4;
 
   // Required. The price to pay for this item, depending on the customer (e.g. student, guest, default ...).
   map<string, google.type.Money> prices = 5;
 
-  // Required. The title.
+  // Required. The title of the offer, e.g. "Offer 4", "Tagesessen"
+  string offer_title = 8;
+
+  // Required. The title of the food, e.g. "Hamburger"
   string title = 6;
 
   // IDs of the labels of the item.
@@ -50,6 +53,18 @@ message Label {
   // Required. The title.
   string title = 2;
 
+  // The URL pointing to an icon.
+  string icon = 3;
+}
+
+// A counter for a menu item.
+message Counter {
+  // Required, output only. The unique ID.
+  string id = 1;
+
+  // Required. The title, e.g. "1", "Außengrill"
+  string title = 2;
+  
   // The URL pointing to an icon.
   string icon = 3;
 }
