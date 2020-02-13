@@ -30,6 +30,13 @@ service FoodService {
 
   // Gets a label.
   rpc GetLabel (GetLabelRequest) returns (Label);
+
+
+  // Lists counters for a restaurant.
+  rpc ListCounters (ListCountersRequest) returns (ListCountersResponse);
+
+  // Gets a counter.
+  rpc GetCounter (GetCounterRequest) returns (Counter);
 }
 
 // Request message for listing restaurants using [ListRestaurants][hpi.cloud.food.v1test.FoodService.ListRestaurants].
@@ -114,6 +121,36 @@ message ListLabelsResponse {
 
 // Request message for [GetLabel][hpi.cloud.food.v1test.FoodService.GetLabel].
 message GetLabelRequest {
+  // Required. The label ID.
+  string id = 1;
+}
+
+
+// Request message for listing counters for a given restaurant using [ListCounters][hpi.cloud.food.v1test.FoodService.ListCounters].
+message ListCountersRequest {
+  // Required. ID of the restaurant the counters should be listed for.
+  string restaurant_id = 1;
+
+  // The maximum number of labels to return in the response.
+  int32 page_size = 2;
+
+  // A pagination token returned from a previous call to `ListLabels`
+  // that indicates where this listing should continue from.
+  string page_token = 3;
+}
+
+// Response message for listing Counters using [ListCounters][hpi.cloud.food.v1test.FoodService.ListCounters].
+message ListCountersResponse {
+  // A possibly paginated list of counters.
+  repeated Counter Counters = 1;
+
+  // Token to retrieve the next page of results, or empty if there are no
+  // more results.
+  string next_page_token = 2;
+}
+
+// Request message for [GetCounter][hpi.cloud.food.v1test.FoodService.GetCounter].
+message GetCounterRequest {
   // Required. The label ID.
   string id = 1;
 }
