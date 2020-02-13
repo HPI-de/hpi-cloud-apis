@@ -128,15 +128,15 @@ message GetLabelRequest {
 
 // Request message for listing counters for a given restaurant using [ListCounters][hpi.cloud.food.v1test.FoodService.ListCounters].
 message ListCountersRequest {
-  // Required. ID of the restaurant the counters should be listed for.
-  string restaurant_id = 1;
-
   // The maximum number of labels to return in the response.
-  int32 page_size = 2;
+  int32 page_size = 1;
 
   // A pagination token returned from a previous call to `ListLabels`
   // that indicates where this listing should continue from.
-  string page_token = 3;
+  string page_token = 2;
+
+  // Required. ID of the restaurant the counters should be listed for.
+  string restaurant_id = 3;
 }
 
 // Response message for listing Counters using [ListCounters][hpi.cloud.food.v1test.FoodService.ListCounters].

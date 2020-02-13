@@ -59,7 +59,7 @@ message Label {
 
 // A counter for a menu item.
 message Counter {
-  // Required, output only. The unique ID.
+  // Required, output only. The unique ID (across restaurants).
   string id = 1;
 
   // Required. ID of the restaurant this counter belongs to. 
