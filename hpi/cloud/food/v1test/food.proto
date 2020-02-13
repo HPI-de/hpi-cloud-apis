@@ -62,6 +62,9 @@ message Counter {
   // Required, output only. The unique ID.
   string id = 1;
 
+  // Required. ID of the restaurant this counter belongs to. 
+  string restaurant_id = 4;
+
   // Required. The title, e.g. "1", "Außengrill"
   string title = 2;
   
