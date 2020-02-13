@@ -17,7 +17,7 @@ script:
   - docker run --rm
       -v $(pwd):$(pwd)
       -w $(pwd)
-      thethingsindustries/protoc
+      thethingsindustries/protoc:3.1.18
       --plugin=protoc-gen-grpc=/usr/bin/protoc-gen-grpc-java
       --java_out=./hpi-cloud-apis/src/main/java
       --grpc_out=./hpi-cloud-apis/src/main/java
