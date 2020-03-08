@@ -2,7 +2,8 @@ syntax = "proto3";
 
 package hpi.cloud.sudo.v1test;
 
-import "hpi/cloud/sudo/v1test/common.proto";
+import "hpi/cloud/common/v1test/l10n_string.proto";
+import "hpi/cloud/common/v1test/permission.proto";
 import "hpi/cloud/sudo/v1test/events.proto";
 
 option java_multiple_files = true;
@@ -33,11 +34,11 @@ message Entity {
 message Metadata {
   // A list of (localized) sources of this entity, e.g. the original URL for an
   // article.
-  repeated L10nString sources = 1;
+  repeated hpi.cloud.common.v1test.L10nString sources = 1;
 
   // A list of (additional) permissions. The author implicitly has write access
   // and collection permissions (applicable e.g. for all articles) apply.
-  map<string, Permission> permissions = 2;
+  map<string, hpi.cloud.common.v1test.Permission> permissions = 2;
 
   // A list of events that record the history of an entity. These will be
   // created automatically by the server and can't be overriden.

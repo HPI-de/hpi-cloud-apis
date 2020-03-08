@@ -11,7 +11,7 @@ option java_package = "de.hpi.cloud.myhpi.v1test";
 
 // A bit of information to show in a MyHPI context.
 message InfoBit {
-  // Required, output only. The unique ID of this info bit.
+  // Required. The unique ID of this info bit.
   string id = 1;
 
   // ID of the parent info bit.

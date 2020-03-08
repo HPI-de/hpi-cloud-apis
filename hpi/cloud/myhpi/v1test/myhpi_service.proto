@@ -2,6 +2,9 @@ syntax = "proto3";
 
 package hpi.cloud.myhpi.v1test;
 
+import "google/protobuf/empty.proto";
+import "google/protobuf/field_mask.proto";
+import "hpi/cloud/common/v1test/entity_creation_metadata.proto";
 import "hpi/cloud/myhpi/v1test/info_bit.proto";
 
 option java_multiple_files = true;
@@ -15,6 +18,15 @@ service MyHpiService {
 
   // Gets a bit of information.
   rpc GetInfoBit (GetInfoBitRequest) returns (InfoBit);
+
+  // Creates a new InfoBit.
+  rpc CreateInfoBit (CreateInfoBitRequest) returns (InfoBit);
+
+  // Updates an InfoBit.
+  rpc UpdateInfoBit (UpdateInfoBitRequest) returns (InfoBit);
+
+  // Deletes an InfoBit.
+  rpc DeleteInfoBit (DeleteInfoBitRequest) returns (google.protobuf.Empty);
 
 
   // Lists tags.
@@ -59,6 +71,33 @@ message ListInfoBitsResponse {
 // Request message for [GetInfoBit][hpi.cloud.myhpi.v1test.MyHpiService.GetInfoBit].
 message GetInfoBitRequest {
   // Required. The info bit ID.
+  string id = 1;
+}
+
+// Request message for [CreateInfoBit][hpi.cloud.myhpi.v1test.MyHpiService.CreateInfoBit].
+message CreateInfoBitRequest {
+  // Required. Content of the new InfoBit. Leaving the id-field empty means the
+  // server automatically generates a unique ID.
+  InfoBit info_bit = 1;
+
+  // Initial metadata like sources and whether this InfoBit will be published.
+  hpi.cloud.common.v1test.EntityCreationMetadata metadata = 2;
+}
+
+// Request message for [UpdateInfoBit][hpi.cloud.myhpi.v1test.MyHpiService.UpdateInfoBit].
+message UpdateInfoBitRequest {
+  // Required. New contents of the InfoBit. The id-field must be set and point
+  // to the InfoBit to update.
+  string id = 1;
+
+  // Required. The update mask applied to the resource. This must not include
+  // the id-field.
+  google.protobuf.FieldMask update_mask = 2;
+}
+
+// Request message for [DeleteInfoBit][hpi.cloud.myhpi.v1test.MyHpiService.DeleteInfoBit].
+message DeleteInfoBitRequest {
+  // Required. ID of the InfoBit to delete.
   string id = 1;
 }
 
